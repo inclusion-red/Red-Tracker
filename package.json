@@ -1,0 +1,20 @@
+{
+  "name": "red-tracker",
+  "version": "1.0.0",
+  "description": "Create application forms and track them.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inclusion-red/Red-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inclusion-red/Red-Tracker/issues"
+  },
+  "homepage": "https://github.com/inclusion-red/Red-Tracker#readme"
+}
