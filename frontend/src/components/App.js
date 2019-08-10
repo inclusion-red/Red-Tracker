@@ -4,17 +4,20 @@ import './App.css';
 import './App.sass';
 
 
-import SplashPage from './splashPage/SplashPage';
-import MainPage from './mainPage/mainPage'
-
+import Splashpage from './splashPage/SplashPage';
+import Mainpage from './mainPage/NewApplicant'
+import Admin from './mainPage/AdminPage';
+import Applicants from './mainPage/ApplicantsIndex';
 
 
 const App = () => (
 
   <HashRouter>
     <Switch>
-      <Route exact path="/" component={SplashPage} />
-      <Route exact path="/mainPage" component={MainPage} />
+      <Route exact path="/" component={Splashpage} />
+      <Route exact path="/MainPage" component={Mainpage} />
+      <Route exact path="/Admin" component={Admin} />
+      <Route exact path="/Applicants" component={Applicants} />
     </Switch>
   </HashRouter>
 
