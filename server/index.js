@@ -8,17 +8,17 @@ app.use(morgan('dev'));
 
 //static middlewaare
 const path = require("path");
-app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.use(express.static(path.join(__dirname, '..', 'frontend/public')));
 
 //parsing middleware for req.body
 const bodyParser= require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use("/api",require('./apiRoutes'));
+app.use("/api",require('./routes'));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../frontend/public/index.html');
+  res.sendFile(path.join(__dirname, '..','frontend/public/index.html'));
 });
 
 //handling 500 errors
