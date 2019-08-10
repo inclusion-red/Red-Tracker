@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
-
 import './App.css';
+import './App.sass';
 
 
 import SplashPage from './splashPage/SplashPage';
