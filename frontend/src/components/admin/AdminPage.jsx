@@ -12,7 +12,7 @@ function AdminPage() {
                     </h1>
                     <div className="buttons are-large is-centered">
                         <Link to="/applicants" className="button is-success">Applicants</Link>
-                        <Link to="/#" className="button is-info">New Form</Link>
+                        <Link to="/newForm" className="button is-info">New Form</Link>
                         <Link to="/#" className="button is-danger">New Admin</Link>
                     </div>
                 </div>

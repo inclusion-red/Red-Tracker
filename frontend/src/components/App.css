@@ -23,6 +23,19 @@
   color: #61dafb;
 }
 
+.remove-outline{
+  font-size: 13px;
+  line-height: 135%;
+  min-height: 20px;
+  width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    z-index: 0;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
