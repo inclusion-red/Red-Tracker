@@ -26,9 +26,8 @@ function FormPreview() {
             </div>
             <form>
                 {Formfields}
-                <input class="button" type="submit" onClick={handleSubmit} value="Preview Form"></input>
+                <input class="button" type="submit" onClick={handleSubmit} value="Submit Form"></input>
             </form>
-
         </div>
     )
 }
