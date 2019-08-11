@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import formGenerator from './formGenerator.jsx'
+import Formfield from './FormFields/InputField.jsx';
+import CheckBox from './FormFields/CheckBox.jsx';
 
 function FormPreview() {
 
     const [Formfields, setFormField] = useState([]);
 
-    function addTextField(){
-        let form = new formGenerator();  
-        setFormField(Formfields.concat(form.textField()));
+    function addTextField() {
+        setFormField(Formfields.concat(<Formfield />));
     }
-    function handleSubmit(e){
+    function addCheckBox() {
+        setFormField(Formfields.concat(<CheckBox />));
+    }
+
+    function handleSubmit(e) {
         console.log(e);
     }
 
@@ -17,14 +21,14 @@ function FormPreview() {
         <div className="container is-small">
             <div className="buttons are-large is-centered">
                 <span className="button is-success" onClick={addTextField}>TextField</span>
-                <span className="button is-info">Checklist</span>
+                <span className="button is-info" onClick={addCheckBox}>Multiple Choice</span>
                 <span className="button is-danger">Drop Down</span>
             </div>
             <form>
-            {Formfields}
-            <a class="Submit" onClick={handleSubmit}>Button</a>
+                {Formfields}
+                <input class="button" type="submit" onClick={handleSubmit} value="Preview Form"></input>
             </form>
-           
+
         </div>
     )
 }
