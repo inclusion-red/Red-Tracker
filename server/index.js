@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || "3000";
-let publicFolder = '../frontend/public';
+let publicFolder = './public';
 
-if(process.env.NODE_ENV === 'production') {
-  publicFolder = './public';
+if(process.env.NODE_ENV === 'development') {
+  publicFolder = '../frontend/public';
   //logging middleware
   const morgan = require('morgan');
   app.use(morgan('dev'));
