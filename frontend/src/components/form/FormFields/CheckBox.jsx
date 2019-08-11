@@ -9,13 +9,13 @@ function CheckBox() {
     const [choices, setChoices] = useState([]);
     
      function addChoice() {
-         setChoices(choices.concat(<CheckBoxIndex/>));
+         setChoices(choices.concat(<CheckBoxIndex key={choices.length}/>));
      }
     return (
 
         <div className="container">
             <QuestionFrom />
-            <div class="columns">
+            <div className="columns">
             {choices}
             </div>
             <span className="button is-success" onClick={addChoice}>add Choice</span>

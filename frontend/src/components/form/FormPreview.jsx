@@ -7,10 +7,10 @@ function FormPreview() {
     const [Formfields, setFormField] = useState([]);
 
     function addTextField() {
-        setFormField(Formfields.concat(<Formfield />));
+        setFormField(Formfields.concat(<Formfield key={Formfields.length}/>));
     }
     function addCheckBox() {
-        setFormField(Formfields.concat(<CheckBox />));
+        setFormField(Formfields.concat(<CheckBox key={Formfields.length}/>));
     }
 
     function handleSubmit(e) {
@@ -26,7 +26,7 @@ function FormPreview() {
             </div>
             <form>
                 {Formfields}
-                <input class="button" type="submit" onClick={handleSubmit} value="Submit Form"></input>
+                <input className="button" type="submit" onClick={handleSubmit} value="Submit Form"></input>
             </form>
         </div>
     )
