@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || "3000";
-const publicFolder = '../frontend/public';
+let publicFolder = '../frontend/public';
 
 if(process.env.NODE_ENV === 'production') {
   publicFolder = './public';
