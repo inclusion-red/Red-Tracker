@@ -14,7 +14,9 @@
     "start-server": "cd server; npm run start-dev",
     "start-dev": "npm-run-all -p start-client start-server",
     "start": "cd server; npm run start",
-    "test": "cd server; npx jest;"
+    "test-server": "cd server; npm run test",
+    "test-frontend": "cd frontend; npm run test",
+    "test": "npm run test-server"
   },
   "repository": {
     "type": "git",
