@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     top: "30%",
     left: "30%",
-    backgroundColor: "rgba(255, 255, 255, 0.7)"
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    overflow: "visible"
   },
   title: {
     flexGrow: 1
@@ -70,7 +71,7 @@ function App() {
           </AppBar>
         </Grid>
         <div> </div>
-        <Grid item xl={8}>
+        <Grid item xl={5}>
           <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
               <Typography
@@ -89,9 +90,9 @@ function App() {
                 course for you.
               </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions gutterBottom>
               <Button size="large" className={classes.applyBtn}>
-                Learn More
+                Apply Now
               </Button>
             </CardActions>
           </Card>
