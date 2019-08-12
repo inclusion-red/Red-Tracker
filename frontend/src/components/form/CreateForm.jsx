@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
 
-function FormPreview() {
+function CreateForm() {
 
     const [Formfields, setFormField] = useState([]);
 
@@ -32,4 +32,4 @@ function FormPreview() {
     )
 }
 
-export default FormPreview
+export default CreateForm
