@@ -1,4 +1,4 @@
-const Admin = require('./admin');
+const {Admin} = require('./models');
 const db = require('./db');
 
 module.exports = {

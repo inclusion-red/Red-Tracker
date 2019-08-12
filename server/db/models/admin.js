@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const db = require('./db');
+const db = require('../db');
 
-const Admin = db.define('admin', {
+module.exports = db.define('admin', {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -16,5 +16,3 @@ const Admin = db.define('admin', {
         allowNull: false
     }
 })
-
-module.exports = Admin;
