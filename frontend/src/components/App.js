@@ -1,11 +1,14 @@
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
-
 import './App.css';
+import './App.sass';
 
 
-import SplashPage from './splashPage/SplashPage';
-import MainPage from './mainPage/mainPage'
+import Splashpage from './splashPage/SplashPage';
+import Mainpage from './applicant/NewApplicant'
+import Admin from './admin/AdminPage';
+import Applicants from './applicant/ApplicantsIndex';
+import NewForm from './form/FormPreview';
 
 
 
@@ -13,12 +16,14 @@ const App = () => (
 
   <HashRouter>
     <Switch>
-      <Route exact path="/" component={SplashPage} />
-      <Route exact path="/mainPage" component={MainPage} />
+      <Route exact path="/" component={Splashpage} />
+      <Route exact path="/MainPage" component={Mainpage} />
+      <Route exact path="/Admin" component={Admin} />
+      <Route exact path="/Applicants" component={Applicants} />
+      <Route exact path="/newForm" component={NewForm} />
     </Switch>
   </HashRouter>
 
 );
 
 export default App;
-

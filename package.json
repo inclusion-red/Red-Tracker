@@ -2,10 +2,19 @@
   "name": "red-tracker",
   "version": "1.0.0",
   "description": "Create application forms and track them.",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "npx jest"
+    "install-frontend": "cd frontend; npm install",
+    "install-backend": "cd server; npm install",
+    "install": "npm run install-frontend; npm run install-backend",
+    "build-frontend": "cd frontend; npm run build",
+    "postbuild-norm": "mkdir ./server/public; npm run build-frontend; mv -v ./frontend/build/* ./server/public",
+    "heroku-postbuild": "mkdir ./server/public; npm run build-frontend; mv -v ./frontend/build/* ./server/public; rm -rf ./frontend; rm -rf ../frontend;",
+    "start-client": "cd frontend; npm start",
+    "start-server": "cd server; npm run start-dev",
+    "start-dev": "npm-run-all -p start-client start-server",
+    "start": "cd server; npm run start",
+    "test": "cd server; npx jest;"
   },
   "repository": {
     "type": "git",
@@ -16,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/inclusion-red/Red-Tracker/issues"
   },
-  "homepage": "https://github.com/inclusion-red/Red-Tracker#readme"
+  "homepage": "https://github.com/inclusion-red/Red-Tracker#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }
