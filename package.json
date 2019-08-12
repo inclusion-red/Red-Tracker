@@ -15,8 +15,10 @@
     "start-dev": "npm-run-all -p start-client start-server",
     "start": "cd server; npm run start",
     "test-server": "cd server; npm run test",
+    "test-server-eslint": "cd server; npm run test-eslint",
     "test-frontend": "cd frontend; npm run test",
-    "test": "npm run test-server"
+    "test-frontend-eslint": "cd frontend; npm run test-eslint",
+    "test": "npm-run-all -p -c test-server test-server-eslint test-frontend test-frontend-eslint"
   },
   "repository": {
     "type": "git",

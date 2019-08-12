@@ -6,7 +6,8 @@
   "scripts": {
     "start-dev": "NODE_ENV=development nodemon index.js",
     "start": "NODE_ENV=production node index.js",
-    "test": "npx eslint ./; npx jest"
+    "test-eslint": "npx eslint ./",
+    "test": "npx jest"
   },
   "author": "",
   "license": "ISC",
