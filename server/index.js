@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || "3000";
 
+require("dotenv").config();
+
 //logging middleware
 const morgan = require("morgan");
 app.use(morgan("dev"));
@@ -18,11 +20,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //passport middleware
 const passport = require("passport-local");
 const request = require("request");
-const session = require("express-session");
+const expressSession = require("express-session");
 
-app.use(session({ secret: "mySecretKey" }));
+//session middleware
+app.use(expressSession({ secret: "mySecretKey" }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(require("cookie-parser")());
+require("./routes")(app);
 
 app.use("/api", require("./routes"));
 
