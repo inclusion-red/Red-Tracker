@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 
 function AdminPage() {
 
-    return (
-        <section className="hero is-primary has-text-centered is-fullheight" >
-            <div className="hero-body">
-                <div className="container">
-                    <h1 className="title">
+  return (
+    <section className="hero is-primary has-text-centered is-fullheight" >
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title">
                         WELCOME #ADMIN
+<<<<<<< HEAD
                     </h1>
                     <div className="buttons are-large is-centered">
                         <Link to="/applicants" className="button is-success">Applicants</Link>
@@ -19,6 +20,18 @@ function AdminPage() {
             </div>
         </section>
     )
+=======
+          </h1>
+          <div className="buttons are-large is-centered">
+            <Link to="/applicants" className="button is-success">Applicants</Link>
+            <Link to="/newForm" className="button is-info">New Form</Link>
+            <Link to="/#" className="button is-danger">New Admin</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+>>>>>>> 3fbfa2ebf0cbe26496f558782dcb8b5f1c3dc721
 }
 
 export default AdminPage
