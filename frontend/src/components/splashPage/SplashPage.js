@@ -79,7 +79,7 @@ function App() {
         </CardContent>
         <CardActions gutterBottom>
           <Button size="large" className={classes.applyBtn}>
-            Apply Now
+            <Link to="/newForm">Apply Now</Link>
           </Button>
         </CardActions>
       </Card>
