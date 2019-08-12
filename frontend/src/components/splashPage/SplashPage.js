@@ -14,13 +14,14 @@ import {
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.secondary.dark
+    backgroundColor: theme.palette.secondary.dark,
+    position: "static"
     // marginRight: theme.spacing(2)
   },
   card: {
     width: "40%",
     height: "40%",
-    margin: "auto",
+    margin: "10% auto",
     // position: "absolute",
     // top: "30%",
     // left: "30%",
@@ -31,12 +32,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   button: {
-    color: "inherit",
+    color: "#fff",
     backgroundColor: theme.palette.secondary.light
   },
   applyBtn: {
     backgroundColor: theme.palette.secondary.light,
-    color: "#fff",
+    color: "inherit",
     margin: "auto"
   },
   cardContent: {

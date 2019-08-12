@@ -1,5 +1,5 @@
-var express = require("express");
-var app = express();
+// var express = require("express");
+// var app = express();
 var passport = require("passport");
 var request = require("request");
 var flash = require("connect-flash");
@@ -66,3 +66,5 @@ app.post(
     res.redirect("/"); //Send them back home
   }
 );
+
+module.exports = { pool };

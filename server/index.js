@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //passport middleware
 const passport = require("passport-local");
-const request = require("request");
 const expressSession = require("express-session");
+const flash = require("connect-flash");
 
 //session middleware
 app.use(expressSession({ secret: "mySecretKey" }));
@@ -28,6 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(require("cookie-parser")());
 require("./routes")(app);
+app.use(flash());
 
 app.use("/api", require("./routes"));
 
