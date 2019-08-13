@@ -14,7 +14,11 @@
     "start-server": "cd server; npm run start-dev",
     "start-dev": "npm-run-all -p start-client start-server",
     "start": "cd server; npm run start",
-    "test": "cd server; npx jest;"
+    "test-server": "cd server; npm run test",
+    "test-server-eslint": "cd server; npm run test-eslint",
+    "test-frontend": "cd frontend; npm run test",
+    "test-frontend-eslint": "cd frontend; npm run test-eslint",
+    "test": "npm-run-all -p -c test-server test-server-eslint test-frontend test-frontend-eslint"
   },
   "repository": {
     "type": "git",
@@ -28,5 +32,8 @@
   "homepage": "https://github.com/inclusion-red/Red-Tracker#readme",
   "devDependencies": {
     "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1"
   }
 }

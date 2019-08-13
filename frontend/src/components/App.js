@@ -8,7 +8,7 @@ import Splashpage from './splashPage/SplashPage';
 import Mainpage from './applicant/NewApplicant'
 import Admin from './admin/AdminPage';
 import Applicants from './applicant/ApplicantsIndex';
-import NewForm from './form/FormPreview';
+import NewForm from './form/CreateForm';
 
 
 
