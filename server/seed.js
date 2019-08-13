@@ -7,19 +7,19 @@ const {Admin} = require('./db');
 const {adminJSON} = require('./db/data');
 
 module.exports = function () { 
-    db.sync({force: true})
+  db.sync({force: true})
     .then( async () => {
-    console.log("----------------------");
-    console.log("Start seeding database");
-    console.log("----------------------");
+      console.log("----------------------");
+      console.log("Start seeding database");
+      console.log("----------------------");
 
-    //generate Admins
-    await Promise.all(adminJSON.map(user => Admin.create(user)));
-    console.log("Data seeded")
+      //generate Admins
+      await Promise.all(adminJSON.map(user => Admin.create(user)));
+      console.log("Data seeded")
 
-    console.log("-----------------------------------------");
-    console.log("Populated Database with Seed Successfully");
-    console.log("-----------------------------------------");
-    process.exit(0);
+      console.log("-----------------------------------------");
+      console.log("Populated Database with Seed Successfully");
+      console.log("-----------------------------------------");
+      process.exit(0);
     });
 }
