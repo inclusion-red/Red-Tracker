@@ -13,11 +13,6 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
-  appBar: {
-    backgroundColor: theme.palette.secondary.dark,
-    position: "static"
-    // marginRight: theme.spacing(2)
-  },
   card: {
     width: "40%",
     height: "40%",
@@ -52,14 +47,6 @@ function App() {
   const classes = useStyles();
   return (
     <div className={cssStyles.backgroundImage}>
-      <AppBar className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            RED TRACKER
-          </Typography>
-          <Button className={classes.button}>Login</Button>
-        </Toolbar>
-      </AppBar>
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>
           <Typography
