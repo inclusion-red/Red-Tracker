@@ -21,7 +21,10 @@
     "test": "npm-run-all -p -c test-server test-server-eslint test-frontend test-frontend-eslint"
   },
   "pre-commit": [
-    "test",
+    "test-server",
+    "test-server-eslint",
+    "test-frontend",
+    "test-frontend-eslint"
   ],
   "repository": {
     "type": "git",
