@@ -16,8 +16,9 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, publicFolder)));
 
 //seed
-const seed = require('./seed');
-seed();
+// const seed = require('./seed');
+// seed();
+
 //parsing middleware for req.body
 const bodyParser= require("body-parser");
 app.use(bodyParser.json());
