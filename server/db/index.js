@@ -1,5 +1,5 @@
 const {Admin} = require('./models');
-const db = require('./db');
+const db = require('./config');
 
 module.exports = {
     Admin,
