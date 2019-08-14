@@ -1,10 +1,10 @@
 // for now i am using dummy data. sequelize queries return a promise so i am simulating so that when we change it to sequelize then the rest of the code using the functions should stay the same.
 
-const admin = require('../dummy/admin');
+// const admin = require('../dummy/admin');
 const applicant = require('../dummy/applicant');
 const applicant_form = require('../dummy/application_form');
-const application_responce = require('../dummy/application_responce');
-const comment = require('../dummy/comment');
+// const application_responce = require('../dummy/application_responce');
+// const comment = require('../dummy/comment');
 const form_field = require('../dummy/form_field');
 const form = require('../dummy/form');
 
@@ -43,15 +43,15 @@ function getFormById(id) {
 // resolves to to form that was updated (or should probably resolve to boolean to send less data)
 function updateForm(id) {
   return new Promise((resolve, reject) => {
-    if(!form) reject(new Error("forms is not found"));
+    if(!form || id) reject(new Error("forms is not found"));
     resolve(true);
   });
 }
 
 // resolve to new form created (should probably resolve to form id to send less data)
-function createForm() {
+function createForm(formdata) {
   return new Promise((resolve, reject) => {
-    if(!form) reject(new Error("forms is not found"));
+    if(!form || !formdata) reject(new Error("forms is not found"));
     // should probably return form that was created
     resolve(true);
   });
@@ -96,7 +96,7 @@ function getUserFormsById(id) {
 // resolves to user's responces (should probably also return the form data (form and form_field))
 function getUserFormResponces(userid, formid) {
   return new Promise((resolve, reject) => {
-    if(!applicant) reject(new Error('applicants cannot be found'));
+    if(!applicant || !userid || !formid) reject(new Error('applicants cannot be found'));
     resolve([]);
   });
 }
