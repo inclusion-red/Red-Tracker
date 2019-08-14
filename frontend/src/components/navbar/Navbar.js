@@ -2,12 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import cssStyles from "./Navbar.module.css";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: theme.palette.secondary.dark,
-    position: "static"
-    // marginRight: theme.spacing(2)
+    position: "static",
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1,
+    color: "#fff"
+  },
+  button: {
+    color: "#fff",
+    backgroundColor: theme.palette.secondary.light
   }
 }));
 
@@ -16,9 +25,12 @@ const Navbar = () => {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          RED TRACKER
+        <Typography color="textPrimary" variant="h6" className={classes.title}>
+          <Link to="/" className={cssStyles.link}>
+            RED TRACKER
+          </Link>
         </Typography>
+
         <Link to="/Login">
           <Button className={classes.button}>Login</Button>
         </Link>
