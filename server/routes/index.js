@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.use('/users', require('./admins'));
+router.use('/admins', require('./admins'));
 
 // handling 404
 router.use(function (req, res, next) {
