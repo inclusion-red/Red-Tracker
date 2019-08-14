@@ -1,3 +1,32 @@
+const sequelize = require("sequelize");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
+//??
+const Users = sequelize.model("Users");
+
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "user[email]",
+      passwordField: "user[password]"
+    },
+    (email, password, done) => {
+      Users.findOne({ email })
+        .then(user => {
+          if (!user || !user.validatePassword(password)) {
+            return done(null, false, {
+              errors: { "email or password": "is invalid" }
+            });
+          }
+
+          return done(null, user);
+        })
+        .catch(done);
+    }
+  )
+);
+
 // var express = require("express");
 // var app = express();
 // var passport = require("passport");
@@ -16,7 +45,7 @@
 //   port: process.env.PGPORT,
 //   ssl: true
 // });
-//
+
 // passport.use(
 //   new LocalStrategy(function(username, password, done) {
 //     Admin.findOne({ username: username }, function(err, user) {
@@ -33,7 +62,7 @@
 //     });
 //   })
 // );
-//
+
 // app.get("/login", function(req, res, next) {
 //   if (req.isAuthenticated()) {
 //     res.redirect("/account"); //send to Admin Page
@@ -49,7 +78,7 @@
 //     }); //try again please
 //   }
 // });
-//
+
 // app.post(
 //   "/login",
 //   passport.authenticate("local", {
@@ -66,5 +95,5 @@
 //     res.redirect("/"); //Send them back home
 //   }
 // );
-//
+
 // module.exports = { pool };

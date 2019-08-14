@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Button, Typography } from "@material-ui/core";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -11,6 +12,15 @@ const useStyles = makeStyles(theme => ({
     height: "225px",
     backgroundColor: "white",
     margin: "10% auto",
+    "@media(max-width: 834px)": {
+      margin: "20% auto"
+    },
+    "@media(max-width: 645px)": {
+      margin: "30% auto"
+    },
+    "@media(max-width: 645px)": {
+      margin: "40% auto"
+    },
     padding: "10px"
   },
   textField: {
@@ -30,10 +40,20 @@ const Login = () => {
   let classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState(false);
 
-  const handleSubmit = (email, password) => {
+  const handleSubmit = async (email, password) => {
     console.log("Email & Password: ", email, password);
     //I want to send the email and password to passport.js to authenticate admin/user
+    let response = await axios.post("/login", {
+      email: email,
+      password: password
+    });
+    let data = response.json();
+    if (data) {
+      setUser(true);
+      //send "true user" to Navbar
+    }
   };
 
   return (
