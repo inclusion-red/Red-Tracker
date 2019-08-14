@@ -16,15 +16,17 @@
     "start": "cd server; npm run start",
     "test-server": "cd server; npm run test",
     "test-server-eslint": "cd server; npm run test-eslint",
+    "test-server-eslint-fix": "cd server; npm run test-eslint-fix",
     "test-frontend": "cd frontend; npm run test",
     "test-frontend-eslint": "cd frontend; npm run test-eslint",
+    "test-frontend-eslint-fix": "cd frontend; npm run test-eslint-fix",
     "test": "npm-run-all -p -c test-server test-server-eslint test-frontend test-frontend-eslint"
   },
   "pre-commit": [
     "test-server",
-    "test-server-eslint",
+    "test-server-eslint-fix",
     "test-frontend",
-    "test-frontend-eslint"
+    "test-frontend-eslint-fix"
   ],
   "repository": {
     "type": "git",
