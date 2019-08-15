@@ -10,19 +10,23 @@ const jwt = require("jsonwebtoken");
 
 Admin.prototype.setPassword = function(password) {
   const saltRounds = 10;
-  var salt = bcrypt.genSaltSync(saltRounds);
-  var hash = bcrypt.hashSync(myPlaintextPassword, salt);
-  this.salt = bcrypt.genSaltSync(saltRounds);
-  this.hash = crypto
-    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
-    .toString("hex");
+
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    this.salt = salt;
+    bcrypt.hash(password, salt, (err, hash) => {
+      this.hash = hash;
+    });
+  });
 };
 
-Admin.prototype.validatePassword = function(password) {
-  const hash = crypto
-    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
-    .toString("hex");
-  return this.hash === hash;
+Admin.prototype.validatePassword = async (username, password) => {
+  const match = await bcrypt.compare(password, username.hash);
+
+  if (match) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 Admin.prototype.generateJWT = function() {
