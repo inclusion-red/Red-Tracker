@@ -1,0 +1,47 @@
+.application-index {
+  width: 100%;
+}
+.applicant-row {
+  display: flex;
+  width: calc(100% - 10px);
+  margin: auto;
+  background-color: white;
+  padding: 10px;
+  /* justify-content: space-around; */
+  margin: 7px auto;
+  cursor: pointer;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 5px;
+  max-width: 750px;
+}
+
+.date {
+  margin: 0 10px;
+}
+
+
+
+.email {
+  margin: auto;
+}
+
+.status {
+  padding: 4px 7px;
+  border-radius: 5px;
+  width: 90px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.status.inreview {
+  background-color: orange;
+}
+
+.status.approved {
+  background-color: green;
+  color: white;
+}
+
+/* todo:
+  - add more colors for status
+  - responsive for small screen */

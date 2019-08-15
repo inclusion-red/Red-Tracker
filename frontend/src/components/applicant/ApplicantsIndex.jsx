@@ -1,18 +1,83 @@
 import React from 'react';
-import applicants from './dummyDB/applicants'
+// import applicants from './dummyDB/applicants'
+import './ApplicantsIndex.css';
+import PropTypes from 'prop-types';
 
-
-function AdminPage() {
-  let lis=[];
-  for( let id in applicants){
-    lis.push( <li key={id}>{applicants[id].email}</li>)
+class ApplicantionRow extends React.Component {
+  render() {
+    return (
+      <div className='applicant-row'>
+        <div className='date'>
+          {this.props.createdat}
+        </div>
+        <div className='email'>
+          {this.props.email}
+        </div>
+        <div className={`status ${this.props.status}`}>
+          {this.props.status}
+        </div>
+      </div>
+    )
   }
-  return (
-    <div>
-      {lis}
-    </div>
-  )
 }
 
-export default AdminPage
+ApplicantionRow.propTypes = {
+  createdat: PropTypes.string,
+  email: PropTypes.string,
+  status: PropTypes.string,
+};
 
+
+
+export default class AllApplicants extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      forms: [{
+        createdat: 'Sept 1, 2012',
+        status: 'approved',
+        email: 'josuerojas@gmail.com'
+      },
+      {
+        createdat: 'Oct 1, 2012',
+        status: 'approved',
+        email: 'wings@gmail.com'
+      },
+      {
+        createdat: 'Aug 1, 2012',
+        status: 'inreview',
+        email: 'chickens@gmail.com'
+      }]
+    }
+  }
+
+  //todo
+  // update with with endpoint
+  componentWillMount() {
+    // fetch('/api/user')
+    //   .then(d => d.json())
+    //   .then( forms => this.setState({ forms: forms.forms || [] }))
+    //   .catch( e => console.log(e));
+  }
+
+  createApplicantRow(applicantData) {
+    return (
+      <ApplicantionRow
+        createat={applicantData.createdat}
+        email={applicantData.email}
+        status={applicantData.status}/>
+    )
+  }
+
+  render() {
+    let ApplicationsForms = this.state.forms.map((e) => {
+      return this.createApplicantRow(e);
+    })
+    return (
+      <div className='application-index'>
+        {ApplicationsForms}
+      </div>
+    )
+  }
+
+}
