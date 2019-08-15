@@ -27,8 +27,6 @@ ApplicantionRow.propTypes = {
   status: PropTypes.string,
 };
 
-
-
 export default class AllApplicants extends React.Component {
   constructor(props) {
     super(props);
