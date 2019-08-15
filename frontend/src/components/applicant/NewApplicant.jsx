@@ -30,4 +30,4 @@ function mainPage() {
   )
 }
 
-export default mainPage
+export default mainPage;

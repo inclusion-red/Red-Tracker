@@ -6,7 +6,9 @@ import "./App.sass";
 import Splashpage from "./splashPage/SplashPage";
 import Mainpage from "./applicant/NewApplicant";
 import Admin from "./admin/AdminPage";
-import Applicants from "./applicant/ApplicantsIndex";
+// import Applicants from "./applicant/ApplicantsIndex";
+import Applicants from "./admin/ViewAllApplications";
+import AllForms from "./admin/ViewAllForms";
 import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
@@ -23,6 +25,7 @@ const App = () => (
       <Route exact path="/MainPage" component={Mainpage} />
       <Route exact path="/Admin" component={Admin} />
       <Route exact path="/Applicants" component={Applicants} />
+      <Route exact path="/allforms" component={AllForms} />
       <Route exact path="/newForm" component={NewForm} />
     </Switch>
   </HashRouter>

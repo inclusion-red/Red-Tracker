@@ -14,6 +14,9 @@ function AdminPage() {
             <Link to="/newForm" className="button is-info">
               New Form
             </Link>
+            <Link to="/allforms" className="button is-link">
+              View Forms
+            </Link>
             <Link to="/SignUp" className="button is-danger">
               New Admin
             </Link>
