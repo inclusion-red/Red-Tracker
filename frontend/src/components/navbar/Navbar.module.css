@@ -1,3 +1,11 @@
 .link {
   color: #fff;
 }
+
+.redText {
+  color: red;
+}
+
+.link:hover .redText {
+  color: #363636;
+}

@@ -1,9 +1,12 @@
 .backgroundImage {
   background-image: url("./aerial-desk-device-1011329.jpg");
   background-size: cover;
-  height: 100vh;
+  min-height: calc(100vh - 64px);
   width: 100vw;
   position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .link {
   color: #fff;

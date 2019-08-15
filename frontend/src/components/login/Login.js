@@ -5,21 +5,17 @@ import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: "flex"
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "calc(100vh - 64px)"
   },
   card: {
-    width: "40%",
-    height: "225px",
+    width: "90%",
     backgroundColor: "white",
     margin: "10% auto",
-    "@media(max-width: 834px)": {
-      margin: "20% auto"
-    },
-    "@media(max-width: 645px)": {
-      margin: "30% auto"
-    },
-    "@media(max-width: 645px)": {
-      margin: "40% auto"
+    "@media(min-width: 768px)": {
+      width: "40%",
     },
     padding: "10px"
   },
