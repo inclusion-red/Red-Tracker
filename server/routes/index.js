@@ -1,12 +1,13 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.use('/admin', require('./admins'));
-router.use('/user', require('./users'));
-router.use('/form', require('./form'));
+router.use("/admin", require("./admins"));
+router.use("/user", require("./users"));
+router.use("/form", require("./form"));
+//router.use('/api', require('./api'));
 
 // handling 404
-router.use(function (req, res, next) {
-  const err = new Error('Not found.');
+router.use(function(req, res, next) {
+  const err = new Error("Not found.");
   err.status = 404;
   next(err);
 });

@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white",
     margin: "10% auto",
     "@media(min-width: 768px)": {
-      width: "40%",
+      width: "40%"
     },
     padding: "10px"
   },
@@ -41,7 +41,7 @@ const Login = () => {
   const handleSubmit = async (email, password) => {
     console.log("Email & Password: ", email, password);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/api/login", {
+    let response = await axios.post("/api/admin/login", {
       email: email,
       password: password
     });

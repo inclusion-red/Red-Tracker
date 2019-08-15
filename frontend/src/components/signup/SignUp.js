@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     width: "90%",
     padding: "10px",
     "@media(min-width: 768px)": {
-      width: "40%",
+      width: "40%"
     }
   },
   textField: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.light,
     alignItems: "center",
     marginTop: "5px"
-  },
+  }
 }));
 
 const SignUp = () => {
@@ -40,10 +40,10 @@ const SignUp = () => {
   const handleSubmit = async (email, password) => {
     console.log("Sign Up Info: ", email, password, name);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/api/signup", {
+    let response = await axios.post("/api/admin/signup", {
       email: email,
       password: password,
-      name: name,
+      name: name
     });
     let data = await response.json();
     if (data) {

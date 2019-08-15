@@ -39,6 +39,7 @@ app.use(
   })
 );
 
+//Requiring the routes
 app.use("/api", require("./routes"));
 
 app.get("*", function(req, res) {

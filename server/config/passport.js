@@ -1,14 +1,13 @@
-const sequelize = require("sequelize");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
-const Admin = sequelize.model("Admin");
+const { Admin } = require("../db");
 
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "user[email]",
-      passwordField: "user[password]"
+      usernameField: "admin[email]",
+      passwordField: "admin[password]"
     },
     (email, password, done) => {
       Admin.findOne({ email })
