@@ -1,0 +1,12 @@
+[
+    {
+      "formId": 1,
+      "applicantId": 1,
+      "status": "New"
+    },
+    {
+      "formId": 1,
+      "applicantId": 2,
+      "status": "New"
+    }
+]

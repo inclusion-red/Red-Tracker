@@ -1,0 +1,12 @@
+[
+    {
+      "ApplicantFormId": 1,
+      "body": "This is great",
+      "adminId": 1
+    },
+    {
+      "ApplicantFormId": 1,
+      "body": "I beg to differ",
+      "adminId": 2
+    }
+  ]

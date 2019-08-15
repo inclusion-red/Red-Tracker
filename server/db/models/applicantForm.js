@@ -9,11 +9,16 @@ const db = require('../config')
 //app resp. belongsto application form !
 //app. form hasmany app. resp. !
 
-module.exports = db.define('applicant_form', {
+module.exports = db.define('ApplicantForm', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   status: {
     type: Sequelize.ENUM,
-    values: ['new', 'review', 'rejected', 'approved'],
-    defaultValue: 'new',
+    values: ['New', 'In Review', 'Rejected', 'Approved'],
+    defaultValue: 'New',
     allowNull: false
   }
 });

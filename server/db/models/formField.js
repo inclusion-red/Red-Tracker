@@ -18,7 +18,8 @@ module.exports = db.define('form_field', {
     allowNull: false
   },
   class: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ""
   },
   other_setting: {
     type: Sequelize.JSON

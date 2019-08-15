@@ -8,7 +8,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 } else {
   config = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USERNAME, process.env.DATABASE_PASSWORD, {
-    dialect: 'postgres'
+    dialect: 'postgres',
+    logging: false
   });
 }
 
