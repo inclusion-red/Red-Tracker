@@ -10,14 +10,16 @@ import Applicants from "./applicant/ApplicantsIndex";
 import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
+import SignUp from "./signup/SignUp";
 
 const App = () => (
   <HashRouter>
+    <Layout>
+      <Route exact path="/" component={Splashpage} />
+      <Route exact path="/Login" component={Login} />
+      <Route exact path="/SignUp" component={SignUp} />
+    </Layout>
     <Switch>
-      <Layout>
-        <Route exact path="/" component={Splashpage} />
-        <Route exact path="/Login" component={Login} />
-      </Layout>
       <Route exact path="/MainPage" component={Mainpage} />
       <Route exact path="/Admin" component={Admin} />
       <Route exact path="/Applicants" component={Applicants} />
