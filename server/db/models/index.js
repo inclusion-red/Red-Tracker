@@ -1,7 +1,7 @@
 const Admin = require('./admin');
 const Applicant = require('./applicant');
-const ApplicationForm = require('./applicationForm');
-const ApplicationResponse = require('./applicationResponse');
+const ApplicantForm = require('./applicantForm');
+const ApplicantResponse = require('./applicantResponse');
 const Comment = require('./comment');
 const Form = require('./form');
 const FormField = require('./formField');
@@ -9,8 +9,8 @@ const FormField = require('./formField');
 module.exports = {
   Admin,
   Applicant,
-  ApplicationForm,
-  ApplicationResponse,
+  ApplicantForm,
+  ApplicantResponse,
   Comment,
   Form,
   FormField,

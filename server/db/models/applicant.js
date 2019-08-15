@@ -5,9 +5,5 @@ module.exports = db.define('applicant', {
   email: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  status: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 })
