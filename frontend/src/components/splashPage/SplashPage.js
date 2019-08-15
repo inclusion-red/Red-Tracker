@@ -3,33 +3,68 @@ import cssStyles from "./SplashPage.module.css";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  AppBar,
   Button,
-  Toolbar,
   Typography,
   Card,
   CardContent,
   CardActions
 } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
-  appBar: {
-    backgroundColor: theme.palette.secondary.dark,
-    position: "static"
-    // marginRight: theme.spacing(2)
-  },
   card: {
     width: "40%",
     height: "40%",
+    "@media(max-width: 1038px)": {
+      width: "43%",
+      height: "42%"
+    },
+    "@media(max-width: 970px)": {
+      width: "43%",
+      height: "45%"
+    },
+    "@media(max-width: 830px)": {
+      width: "45%",
+      height: "47%"
+    },
+    "@media(max-width: 790px)": {
+      width: "47%",
+      height: "50%"
+    },
+    "@media(max-width: 694px)": {
+      width: "50%",
+      height: "52%"
+    },
+    "@media(max-width: 655px)": {
+      width: "52%",
+      height: "55%"
+    },
+    "@media(max-width: 608px)": {
+      width: "55%",
+      height: "58%"
+    },
+    "@media(max-width: 507px)": {
+      width: "58%",
+      height: "61%"
+    },
+    "@media(max-width: 433px)": {
+      width: "60%",
+      height: "64%"
+    },
+    "@media(max-width: 410px)": {
+      width: "62%",
+      height: "67%"
+    },
+    "@media(max-width: 381px)": {
+      width: "65%",
+      height: "70%"
+    },
     margin: "10% auto",
-    // position: "absolute",
-    // top: "30%",
-    // left: "30%",
+    position: "absolute",
+    top: "15%",
+    left: "30%",
     backgroundColor: "rgba(255, 255, 255, 0.8)",
     overflow: "visible"
-  },
-  title: {
-    flexGrow: 1
   },
   button: {
     color: "#fff",
@@ -52,14 +87,6 @@ function App() {
   const classes = useStyles();
   return (
     <div className={cssStyles.backgroundImage}>
-      <AppBar className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            RED TRACKER
-          </Typography>
-          <Button className={classes.button}>Login</Button>
-        </Toolbar>
-      </AppBar>
       <Card className={classes.card}>
         <CardContent className={classes.cardContent}>
           <Typography
@@ -78,9 +105,11 @@ function App() {
             you.
           </Typography>
         </CardContent>
-        <CardActions gutterBottom>
+        <CardActions>
           <Button size="large" className={classes.applyBtn}>
-            <Link to="/newForm">Apply Now</Link>
+            <Link to="/newForm" className={cssStyles.link}>
+              Apply Now
+            </Link>
           </Button>
         </CardActions>
       </Card>

@@ -16,10 +16,18 @@
     "start": "cd server; npm run start",
     "test-server": "cd server; npm run test",
     "test-server-eslint": "cd server; npm run test-eslint",
+    "test-server-eslint-fix": "cd server; npm run test-eslint-fix",
     "test-frontend": "cd frontend; npm run test",
     "test-frontend-eslint": "cd frontend; npm run test-eslint",
+    "test-frontend-eslint-fix": "cd frontend; npm run test-eslint-fix",
     "test": "npm-run-all -p -c test-server test-server-eslint test-frontend test-frontend-eslint"
   },
+  "pre-commit": [
+    "test-server",
+    "test-server-eslint-fix",
+    "test-frontend",
+    "test-frontend-eslint-fix"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inclusion-red/Red-Tracker.git"
@@ -31,7 +39,8 @@
   },
   "homepage": "https://github.com/inclusion-red/Red-Tracker#readme",
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "connect-flash": "^0.1.1"
