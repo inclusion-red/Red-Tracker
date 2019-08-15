@@ -27,7 +27,7 @@ const Navbar = () => {
       <Toolbar>
         <Typography color="textPrimary" variant="h6" className={classes.title}>
           <Link to="/" className={cssStyles.link}>
-            <span style={{ color: 'red' }}>RED</span> TRACKER
+            <span className={cssStyles.redText}>RED</span> TRACKER
           </Link>
         </Typography>
 
