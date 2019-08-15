@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 function AdminPage() {
-
   return (
-    <section className="hero is-primary has-text-centered is-fullheight" >
+    <section className="hero is-primary has-text-centered is-fullheight">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
@@ -22,3 +21,4 @@ function AdminPage() {
 }
 
 export default AdminPage
+
