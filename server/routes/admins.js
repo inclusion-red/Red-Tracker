@@ -5,7 +5,7 @@ const { Admins } = require("../db");
 
 // GET requests to /api/admins/
 //POST new user route (optional, everyone has access)
-router.post("/signup", auth.optional, (req, res, next) => {
+router.post("/signup", auth.optional, (req, res) => {
   const {
     body: { admin }
   } = req;
@@ -60,7 +60,7 @@ router.post("/login", auth.optional, (req, res, next) => {
   return passport.authenticate(
     "local",
     { session: false },
-    (err, passportAdmin, info) => {
+    (err, passportAdmin) => {
       if (err) {
         return next(err);
       }
@@ -78,7 +78,7 @@ router.post("/login", auth.optional, (req, res, next) => {
 });
 
 //GET current route (required, only authenticated users have access)
-router.get("/current", auth.required, (req, res, next) => {
+router.get("/current", auth.required, (req, res) => {
   const {
     payload: { id }
   } = req;
