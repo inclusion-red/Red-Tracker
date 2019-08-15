@@ -53,6 +53,7 @@ export default class AllApplicants extends React.Component {
 
   //todo
   // update with with endpoint
+  // application row click should be a link
   componentWillMount() {
     // fetch('/api/user')
     //   .then(d => d.json())
