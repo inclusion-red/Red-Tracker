@@ -105,7 +105,7 @@ function App() {
             you.
           </Typography>
         </CardContent>
-        <CardActions gutterBottom>
+        <CardActions>
           <Button size="large" className={classes.applyBtn}>
             <Link to="/newForm" className={cssStyles.link}>
               Apply Now

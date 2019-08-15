@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-const port = process.env.PORT || "3000";
-let publicFolder = "./public";
+const port = process.env.PORT || "3001";
+let publicFolder = './public';
 
 if (process.env.NODE_ENV === "development") {
   publicFolder = "../frontend/public";
@@ -14,6 +14,10 @@ if (process.env.NODE_ENV === "development") {
 //static middlewaare
 const path = require("path");
 app.use(express.static(path.join(__dirname, publicFolder)));
+
+//seed
+// const seed = require('./seed');
+// seed();
 
 //parsing middleware for req.body
 const bodyParser = require("body-parser");
@@ -34,6 +38,7 @@ app.use(
 app.use("/api", require("./routes"));
 
 app.get("*", function(req, res) {
+
   res.sendFile(path.join(__dirname, `${publicFolder}/index.html`));
 });
 
@@ -44,6 +49,12 @@ app.use(function(err, req, res) {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
+//
+// const {db} = require('./db');
+// db.sync({force: true})
+// .then({
+
+// })
 app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });

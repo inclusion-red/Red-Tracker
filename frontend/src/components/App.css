@@ -28,11 +28,11 @@
   line-height: 135%;
   min-height: 20px;
   width: 100%;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    z-index: 0;
-    overflow-y: visible;
-    overflow-x: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: 0;
+  overflow-y: visible;
+  overflow-x: hidden;
 }
 
 

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 
-router.use('/users', require('./admins'));
+router.use('/admin', require('./admins'));
+router.use('/user', require('./users'));
+router.use('/form', require('./form'));
 
 // handling 404
 router.use(function (req, res, next) {
@@ -8,4 +10,5 @@ router.use(function (req, res, next) {
   err.status = 404;
   next(err);
 });
+
 module.exports = router;
