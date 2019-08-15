@@ -63,7 +63,7 @@ export default class AllApplicants extends React.Component {
   createApplicantRow(applicantData) {
     return (
       <ApplicantionRow
-        createat={applicantData.createdat}
+        createdat={applicantData.createdat}
         email={applicantData.email}
         status={applicantData.status}/>
     )
