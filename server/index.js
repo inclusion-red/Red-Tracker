@@ -2,7 +2,11 @@ const express = require("express");
 const app = express();
 
 const port = process.env.PORT || "3001";
-let publicFolder = './public';
+let publicFolder = "./public";
+
+//requiring all the models
+require("./db/models");
+require("./config/passport");
 
 if (process.env.NODE_ENV === "development") {
   publicFolder = "../frontend/public";
@@ -35,10 +39,10 @@ app.use(
   })
 );
 
+//Requiring the routes
 app.use("/api", require("./routes"));
 
 app.get("*", function(req, res) {
-
   res.sendFile(path.join(__dirname, `${publicFolder}/index.html`));
 });
 

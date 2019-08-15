@@ -1,18 +1,22 @@
-const Sequelize = require('sequelize');
-const db = require('../config');
+const Sequelize = require("sequelize");
+const db = require("../config");
 
-module.exports = db.define('admin', {
+module.exports = db.define("admin", {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
   },
-  password: {
+  hash: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
+  },
+  salt: {
+    type: Sequelize.STRING,
+    allowNull: false
   },
   name: {
     type: Sequelize.STRING,
     allowNull: false
   }
-})
+});
