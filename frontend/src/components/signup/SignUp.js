@@ -53,7 +53,7 @@ const SignUp = () => {
   const handleSubmit = async (email, password) => {
     console.log("Sign Up Info: ", email, password, firstName, lastName);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/signup", {
+    let response = await axios.post("/api/signup", {
       email: email,
       password: password,
       firstName: firstName,
