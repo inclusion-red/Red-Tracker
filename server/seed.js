@@ -6,7 +6,7 @@ const {Admin} = require('./db');
 //data
 const {adminJSON} = require('./db/data');
 
-module.exports = function () { 
+const seed = function () { 
   db.sync({force: true})
     .then( async () => {
       console.log("----------------------");
@@ -23,3 +23,6 @@ module.exports = function () {
       process.exit(0);
     });
 }
+
+seed();
+module.exports = seed;
