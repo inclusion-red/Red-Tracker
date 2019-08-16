@@ -1,6 +1,7 @@
 const router = require('express').Router();
 //const { getAllUsers, getUserFormsById, getUserFormResponces } = require('../db/queries');
-const {Admin, Applicant, ApplicantForm, ApplicantResponse, Comment, Form, FormField} = require('../db/models');
+//const {Admin, Applicant, ApplicantForm, ApplicantResponse, Comment, Form, FormField} = require('../db/models');
+const {Applicant} = require('../db/models');
 
 // get all users (i don't think we need this)
 router.get('/', (req, res) => {
