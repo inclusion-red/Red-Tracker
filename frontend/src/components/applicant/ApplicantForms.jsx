@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LinkRow } from '../reusable/Row';
+import { formatDate } from '../helpers/formattext';
+
 
 // thi page is for applicants to view all available applications.
 
@@ -44,8 +46,9 @@ export default class ApplicationForm extends React.Component {
   createFormRow(formData, delay) {
     return (
       <FormRow
+        key={`form-row-${formData.id}`}
         delay={`${delay}ms`}
-        createdat={formData.createdAt}
+        createdat={formatDate(formData.createdAt)}
         title={formData.title}
         active={formData.active}
         to={`/Applicants/form/${formData.id}`}/>
@@ -53,8 +56,11 @@ export default class ApplicationForm extends React.Component {
   }
 
   render() {
+    let delay = 350;
     let Forms = this.state.forms.map((e) => {
-      return this.createFormRow(e);
+      let row = this.createFormRow(e, delay);
+      delay+=350;
+      return row;
     })
     return (
       <div className='all-forms'>

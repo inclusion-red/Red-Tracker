@@ -10,6 +10,7 @@ import Admin from "./admin/AdminPage";
 import Applicants from "./admin/ViewAllApplications";
 import AdminAllForms from "./admin/ViewAllForms";
 import ViewSingleFormAdmin from "./admin/ViewSingleForm";
+import ViewSingleApplicant from "./admin/ViewSingleApplicant";
 import ViewSingleFormApplicant from "./applicant/ViewSingleForm";
 import ApplicantForms from "./applicant/ApplicantForms";
 import NewForm from "./form/CreateForm";
@@ -29,6 +30,7 @@ const App = () => (
       <Route exact path="/Admin" component={Admin} />
       <Route exact path="/Admin/form" component={AdminAllForms} />
       <Route exact path="/Admin/form/:formid" component={ViewSingleFormAdmin} />
+      <Route exact path="/Admin/applicant/:applicantid/:formid" component={ViewSingleApplicant} />
       <Route exact path="/Applicants" component={Applicants} />
       <Route exact path="/Applicants/form/:formid" component={ViewSingleFormApplicant} />
       <Route exact path="/applicantforms" component={ApplicantForms} />
