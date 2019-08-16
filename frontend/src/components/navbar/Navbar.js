@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import cssStyles from "./Navbar.module.css";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -20,8 +21,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const handleClick = async () => {
+  let response = await axios.get("/api/admin/logout");
+  window.data = undefined;
+};
+
 const Navbar = () => {
   let classes = useStyles();
+  const [user, setUser] = useState(false);
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -30,10 +37,15 @@ const Navbar = () => {
             <span className={cssStyles.redText}>RED</span> TRACKER
           </Link>
         </Typography>
-
-        <Link to="/Login">
-          <Button className={classes.button}>Login</Button>
-        </Link>
+        {window.data ? (
+          <Button onClick={handleClick} className={classes.button}>
+            Logout
+          </Button>
+        ) : (
+          <Link to="/Login">
+            <Button className={classes.button}>Login</Button>
+          </Link>
+        )}
       </Toolbar>
     </AppBar>
   );

@@ -93,6 +93,12 @@ router.get("/current", auth.required, (req, res) => {
   });
 });
 
+router.get("/logout", function(req, res) {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
+});
+
 // router.get('/', function (req, res, next) { /* etc */});
 
 module.exports = router;

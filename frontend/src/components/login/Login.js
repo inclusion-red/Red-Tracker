@@ -47,6 +47,7 @@ const Login = () => {
       admin: { email: email, password: password }
     });
     let data = response;
+    window.data = data;
     console.log("Data: ", data);
     if (data) {
       setUser(true);
