@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Button, Typography } from "@material-ui/core";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -17,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     "@media(min-width: 768px)": {
       width: "40%"
     },
-    padding: "10px"
+    padding: "10px",
+    textAlign: 'center'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -28,8 +30,8 @@ const useStyles = makeStyles(theme => ({
     color: "#fff",
     backgroundColor: theme.palette.secondary.light,
     alignItems: "center",
-    marginTop: "5px"
-  }
+    margin: "5px auto"
+  },
 }));
 
 const Login = () => {
@@ -42,21 +44,34 @@ const Login = () => {
     console.log("Email & Password: ", email, password);
     //I want to send the email and password to passport.js to authenticate admin/user
     let response = await axios.post("/api/admin/login", {
-      email: email,
-      password: password
+      admin: { email: email, password: password }
     });
-    let data = response.json();
+    let data = response;
+    console.log("Data: ", data);
     if (data) {
       setUser(true);
-      //send "true user" to Navbar
     }
+    //if (data) {
+    //setUser(true);
+    //send "true user" to Navbar
+    //}
   };
+
+  if (user) {
+    return <Redirect to="/Admin" />;
+  }
 
   return (
     <div>
-      <Typography />
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
+          <Typography
+            className={classes.title}
+            variant="h4"
+            color="textSecondary"
+            gutterBottom>
+            Log In to Admin
+          </Typography>
           <TextField
             required
             id="outlined-required"

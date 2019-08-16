@@ -1,11 +1,14 @@
 [
     {
-      "active": true
+      "active": true,
+      "title": "Some title"
     },
     {
-      "active": false
+      "active": false,
+      "title": "Another title"
     },
     {
-      "active": false
+      "active": false,
+      "title": "Third title"
     }
 ]

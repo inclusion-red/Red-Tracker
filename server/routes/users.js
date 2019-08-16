@@ -1,30 +1,49 @@
 const router = require('express').Router();
-const { getAllUsers, getUserFormsById, getUserFormResponces } = require('../db/queries');
+//const { getAllUsers, getUserFormsById, getUserFormResponces } = require('../db/queries');
+//const {Admin, Applicant, ApplicantForm, ApplicantResponse, Comment, Form, FormField} = require('../db/models');
+const {Applicant, Form, FormField, ApplicantForm} = require('../db/models');
 
-// get all users
+// get all users (i don't think we need this)
 router.get('/', (req, res) => {
-  getAllUsers()
+  Applicant.findAll()
     .then((users) => res.send(users))
     .catch((e) => res.send({ error: e }));
 });
 
-// get all forms from a user (not the actual responces just metadata)
-router.get('/:id', (req, res) => {
-  let id = req.params.id || -1;
-  if(id == -1) res.send({ error: "some error" });
-  getUserFormsById(id)
-    .then((applicant) => res.send(applicant))
-    .catch((e) => res.send({ error: e }));
+// get all forms from a user (not the actual responses just metadata)
+router.get('/:id', (req, res, next) => {
+  let applicantId = req.params.id;
+  Applicant.findOne({
+    where: {id: applicantId},
+    include: [{model: Form}]})
+    .then((forms) => res.send(forms))
+    .catch((e) => next(e));
 });
 
 // get the responces from a user by their id and the form's id
-router.get('/:userid/:formid/', (req, res) => {
+// also get the formfield and the applicant response, form title
+router.get('/:userid/:formid/', (req, res, next) => {
   let userId = req.params.userid || false;
   let formId = req.params.formid || false;
   if(!userId || !formId) res.send({ error: "some error" });
-  getUserFormResponces(userId, formId)
-    .then((data) => res.send(data))
-    .catch((e) => res.send({ error: e }));
+  Applicant.findOne({
+    where: {id: userId},
+    include: [{
+      model: Form,
+      where: {id: formId},
+      include: [{
+        model: FormField,
+        where: {formId: formId },
+        include: [{
+          model: ApplicantForm,
+          where: {formId: formId, applicantId: userId}
+        }]
+      }]
+    }
+    ]
+  })
+    .then((forms) => res.send(forms))
+    .catch((e) => next(e));
 });
 
 module.exports = router;

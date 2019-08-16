@@ -6,7 +6,7 @@ const db = require('../config');
 //tag type ?
 //input, textarea !
 //other settings: json !
-module.exports = db.define('form_field', {
+module.exports = db.define('formfield', {
   tag: {
     type: Sequelize.ENUM,
     values: ['input', 'textarea'],

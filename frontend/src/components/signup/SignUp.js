@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Button, Typography } from "@material-ui/core";
+import history from "../../history";
+import { Redirect } from "react-router-dom";
+
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -15,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     padding: "10px",
     "@media(min-width: 768px)": {
       width: "40%"
-    }
+    },
+    textAlign: 'center'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -40,23 +44,37 @@ const SignUp = () => {
   const handleSubmit = async (email, password) => {
     console.log("Sign Up Info: ", email, password, name);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/api/admin/signup", {
-      email: email,
-      password: password,
-      name: name
-    });
-    let data = await response.json();
-    if (data) {
-      setUser(true);
-      //send "true user" to Navbar
+    try {
+      let response = await axios.post("/api/admin/signup", {
+        admin: { email: email, password: password, name: name }
+      });
+      let data = await response.data;
+      console.log("Data: ", data);
+      setUser(data.admin.email);
+      if (data) {
+        setUser(true);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  if (user) {
+    return <Redirect to="/Login" />;
+  }
 
   return (
     <div>
       <Typography />
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
+          <Typography
+            className={classes.title}
+            variant="h4"
+            color="textSecondary"
+            gutterBottom>
+            Sing Up a new Admin
+          </Typography>
           <TextField
             required
             id="outlined-required"

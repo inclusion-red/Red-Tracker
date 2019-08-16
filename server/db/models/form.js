@@ -16,5 +16,9 @@ module.exports = db.define('form', {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
     allowNull: false
+  },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 })

@@ -10,11 +10,10 @@ const jwt = require("jsonwebtoken");
 
 Admin.prototype.setPassword = function(password) {
   const saltRounds = 10;
-
   bcrypt.genSalt(saltRounds, (err, salt) => {
-    this.salt = salt;
+    this.dataValues.salt = salt;
     bcrypt.hash(password, salt, (err, hash) => {
-      this.hash = hash;
+      this.dataValues.hash = hash;
     });
   });
 };
@@ -37,7 +36,7 @@ Admin.prototype.generateJWT = function() {
   return jwt.sign(
     {
       email: this.email,
-      id: this._id,
+      id: this.id,
       exp: parseInt(expirationDate.getTime() / 1000, 10)
     },
     "secret"
@@ -46,7 +45,7 @@ Admin.prototype.generateJWT = function() {
 
 Admin.prototype.toAuthJSON = function() {
   return {
-    _id: this._id,
+    id: this.id,
     email: this.email,
     token: this.generateJWT()
   };

@@ -1,11 +1,11 @@
 const passport = require("passport");
 const router = require("express").Router();
 const auth = require("./auth");
-const { Admins } = require("../db");
+const { Admin } = require("../db");
 
 // GET requests to /api/admins/
 //POST new user route (optional, everyone has access)
-router.post("/signup", auth.optional, (req, res) => {
+router.post("/signup", auth.optional, async (req, res) => {
   const {
     body: { admin }
   } = req;
@@ -26,13 +26,14 @@ router.post("/signup", auth.optional, (req, res) => {
     });
   }
 
-  const finalUser = new Admins(admin);
-
-  finalUser.setPassword(admin.password);
-
-  return finalUser
-    .save()
-    .then(() => res.json({ user: finalUser.toAuthJSON() }));
+  Admin.create(admin)
+    .then(function(admin) {
+      admin.setPassword(req.body.admin.password);
+      return admin.save().then(() => res.json({ admin: admin.toAuthJSON() }));
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 });
 
 //POST login route (optional, everyone has access)
@@ -40,7 +41,7 @@ router.post("/login", auth.optional, (req, res, next) => {
   const {
     body: { admin }
   } = req;
-
+  console.log("admin: --------- ", admin);
   if (!admin.email) {
     return res.status(422).json({
       errors: {
@@ -83,7 +84,7 @@ router.get("/current", auth.required, (req, res) => {
     payload: { id }
   } = req;
 
-  return Admins.findById(id).then(admin => {
+  return Admin.findById(id).then(admin => {
     if (!admin) {
       return res.sendStatus(400);
     }

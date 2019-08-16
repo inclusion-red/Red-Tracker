@@ -2,25 +2,9 @@
   width: 100%;
 }
 
-.form-row {
-  display: flex;
-  width: calc(100% - 10px);
-  margin: auto;
-  background-color: white;
-  padding: 10px;
-  margin: 7px auto;
-  cursor: pointer;
-  border: 1px solid rgb(181, 181, 181);
-  border-radius: 5px;
-  max-width: 750px;
-}
-
-
 .date {
   margin: 0 10px;
 }
-
-
 
 .row-title {
   margin: auto;
