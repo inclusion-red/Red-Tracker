@@ -32,7 +32,7 @@ router.post("/signup", auth.optional, async (req, res) => {
       return admin.save().then(() => res.json({ admin: admin.toAuthJSON() }));
     })
     .catch(function(err) {
-      console.log(err, admin.email);
+      console.log(err);
     });
 });
 
@@ -41,7 +41,7 @@ router.post("/login", auth.optional, (req, res, next) => {
   const {
     body: { admin }
   } = req;
-
+  console.log("admin: --------- ", admin);
   if (!admin.email) {
     return res.status(422).json({
       errors: {

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Button, Typography } from "@material-ui/core";
+import history from "../../history";
+import { Redirect } from "react-router-dom";
+
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -40,18 +43,24 @@ const SignUp = () => {
   const handleSubmit = async (email, password) => {
     console.log("Sign Up Info: ", email, password, name);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("api/admin/signup", {
-      email: email,
-      password: password,
-      name: name
-    });
-    let data = await response.json();
-    console.log("Data: ", data);
-    // if (data) {
-    //   setUser(true);
-    //   //send "true user" to Navbar
-    // }
+    try {
+      let response = await axios.post("/api/admin/signup", {
+        admin: { email: email, password: password, name: name }
+      });
+      let data = await response.data;
+      console.log("Data: ", data);
+      setUser(data.admin.email);
+      if (data) {
+        setUser(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  if (user) {
+    return <Redirect to="/Login" />;
+  }
 
   return (
     <div>
