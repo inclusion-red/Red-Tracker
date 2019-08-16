@@ -31,11 +31,11 @@ export default class ViewSingleFormApplicant extends React.Component {
 
   handleChange(event,id) {
     if (id > 0) {
-    let response = {...this.state.response};
-    response[id] = event.target.value;
-    console.log(event.target.value);
-    console.log(id);
-    this.setState({response: response});
+      let response = {...this.state.response};
+      response[id] = event.target.value;
+      console.log(event.target.value);
+      console.log(id);
+      this.setState({response: response});
     } else {
       this.setState({applicant: {email: event.target.value}});
     }
@@ -58,10 +58,10 @@ export default class ViewSingleFormApplicant extends React.Component {
         </label>
         {formfields.map(field => {
           return(
-          <label key={field.id}>
-            {field.question}
-            <field.tag type="text" value={this.state.response[field.id]} onChange={(e)=> this.handleChange(e, field.id)} />
-          </label>
+            <label key={field.id}>
+              {field.question}
+              <field.tag type="text" value={this.state.response[field.id]} onChange={(e)=> this.handleChange(e, field.id)} />
+            </label>
           )
         })}
         <button>Submit</button>
