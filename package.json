@@ -13,7 +13,7 @@
     "start-client": "cd frontend; npm start",
     "start-server": "cd server; npm run start-dev",
     "start-dev": "npm-run-all -p start-client start-server",
-    "start": "cd server; npm run start",
+    "start": "cd server; npm run seed; npm run start",
     "test-server": "cd server; npm run test",
     "test-server-eslint": "cd server; npm run test-eslint",
     "test-server-eslint-fix": "cd server; npm run test-eslint-fix",
