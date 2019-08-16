@@ -11,60 +11,20 @@ import {
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+// todo: add a line in medium-devices between card sections
 const useStyles = makeStyles(theme => ({
   card: {
-    width: "40%",
-    height: "40%",
-    "@media(max-width: 1038px)": {
-      width: "43%",
-      height: "42%"
+    width: "90%",
+    textAlign: "center",
+    "@media(min-width: 768px)": {
+      width: "40%",
     },
-    "@media(max-width: 970px)": {
-      width: "43%",
-      height: "45%"
-    },
-    "@media(max-width: 830px)": {
-      width: "45%",
-      height: "47%"
-    },
-    "@media(max-width: 790px)": {
-      width: "47%",
-      height: "50%"
-    },
-    "@media(max-width: 694px)": {
-      width: "50%",
-      height: "52%"
-    },
-    "@media(max-width: 655px)": {
-      width: "52%",
-      height: "55%"
-    },
-    "@media(max-width: 608px)": {
-      width: "55%",
-      height: "58%"
-    },
-    "@media(max-width: 507px)": {
-      width: "58%",
-      height: "61%"
-    },
-    "@media(max-width: 433px)": {
-      width: "60%",
-      height: "64%"
-    },
-    "@media(max-width: 410px)": {
-      width: "62%",
-      height: "67%"
-    },
-    "@media(max-width: 381px)": {
-      width: "65%",
-      height: "70%"
-    },
-    margin: "10% auto",
-    position: "absolute",
-    top: "15%",
-    left: "30%",
+    margin: "auto",
     backgroundColor: "rgba(255, 255, 255, 0.8)",
-    overflow: "visible"
+    overflow: "visible",
+    display: "flex",
+    flexFlow: "wrap",
+    padding: "15px 0"
   },
   button: {
     color: "#fff",
@@ -80,6 +40,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
+  },
+  cardSection: {
+    width: "100%",
+    "@media(min-width: 768px)": {
+      width: "50%",
+    },
+    display: "inline-block",
+    heigh: "100%",
+    display: "flex",
+    flexDirection: "column"
+  },
+  buttonWrapper: {
+    marginTop: "auto"
   }
 }));
 
@@ -88,30 +61,48 @@ function App() {
   return (
     <div className={cssStyles.backgroundImage}>
       <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography
-            className={classes.title}
-            variant="h4"
-            color="textSecondary"
-            gutterBottom
-          >
-            GO AQUAMARIEN GO!!
-          </Typography>
-          <Typography variant="body1">
-            At Inclusion, our programs are not just about coding. You will also
-            have access to both a career and technical mentor from Twilio,
-            networking opportunities, and lunch and learns. If you’re a
-            dedicated learner looking to level up, then this is the course for
-            you.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="large" className={classes.applyBtn}>
-            <Link to="/newForm" className={cssStyles.link}>
-              Apply Now
-            </Link>
-          </Button>
-        </CardActions>
+        <div className={classes.cardSection}>
+          <CardContent className={classes.cardContent}>
+            <Typography
+              className={classes.title}
+              variant="h4"
+              color="textSecondary"
+              gutterBottom>
+              Admin
+            </Typography>
+            <Typography variant="body1">
+              Create, manage, and track applications. With easy to use interface. Log in to get Started
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.buttonWrapper}>
+            <Button size="large" className={classes.applyBtn}>
+              <Link to="/Login" className={cssStyles.link}>
+                Login
+              </Link>
+            </Button>
+          </CardActions>
+        </div>
+        <div className={classes.cardSection}>
+          <CardContent className={classes.cardContent}>
+            <Typography
+              className={classes.title}
+              variant="h4"
+              color="textSecondary"
+              gutterBottom>
+              Applicant
+            </Typography>
+            <Typography variant="body1">
+              Or if you are a an applicant check the url or check for your application
+            </Typography>
+          </CardContent>
+          <CardActions className={classes.buttonWrapper}>
+            <Button size="large" className={classes.applyBtn}>
+              <Link to="/MainPage" className={cssStyles.link}>
+                Find Application
+              </Link>
+            </Button>
+          </CardActions>
+        </div>
       </Card>
     </div>
   );

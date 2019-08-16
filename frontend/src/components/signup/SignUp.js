@@ -12,12 +12,10 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     width: "90%",
-    backgroundColor: "white",
-    margin: "10% auto",
+    padding: "10px",
     "@media(min-width: 768px)": {
       width: "40%"
-    },
-    padding: "10px"
+    }
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -32,20 +30,22 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Login = () => {
+const SignUp = () => {
   let classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setname] = useState("");
   const [user, setUser] = useState(false);
 
   const handleSubmit = async (email, password) => {
-    console.log("Email & Password: ", email, password);
+    console.log("Sign Up Info: ", email, password, name);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/api/admin/login", {
+    let response = await axios.post("/api/admin/signup", {
       email: email,
-      password: password
+      password: password,
+      name: name
     });
-    let data = response.json();
+    let data = await response.json();
     if (data) {
       setUser(true);
       //send "true user" to Navbar
@@ -57,6 +57,20 @@ const Login = () => {
       <Typography />
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Name"
+            fullWidth
+            placeholder="Name"
+            style={{ margin: "10" }}
+            margin="normal"
+            variant="outlined"
+            value={name}
+            onChange={e => {
+              setname(e.target.value);
+            }}
+          />
           <TextField
             required
             id="outlined-required"
@@ -97,4 +111,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
