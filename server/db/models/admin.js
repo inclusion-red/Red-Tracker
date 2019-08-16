@@ -8,12 +8,10 @@ module.exports = db.define("admin", {
     unique: true
   },
   hash: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   salt: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   name: {
     type: Sequelize.STRING,
