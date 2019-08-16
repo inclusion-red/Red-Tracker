@@ -13,11 +13,11 @@ import Layout from "./layout/Layout";
 
 const App = () => (
   <HashRouter>
-    <Switch>
       <Layout>
         <Route exact path="/" component={Splashpage} />
         <Route exact path="/Login" component={Login} />
       </Layout>
+    <Switch>
       <Route exact path="/MainPage" component={Mainpage} />
       <Route exact path="/Admin" component={Admin} />
       <Route exact path="/Applicants" component={Applicants} />

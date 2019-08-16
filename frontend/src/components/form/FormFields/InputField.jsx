@@ -2,7 +2,7 @@ import React,{useState, useEffect}from 'react';
 import useForm from '../../customHooks/useForm';
 import QuestionForm from './QuestionForm';
 
-function InputField() {
+function InputField(props) {
 
   const [arows, UseArows] = useState(0);
 
@@ -11,16 +11,13 @@ function InputField() {
     const ansRowCount = answerArea ? answerArea.value.split("\n").length : 0;
     UseArows( ansRowCount + .5);
   });
-
-  const { inputs, handleInputChange } = useForm();
-
-
+  
   return (
         <>
-        <QuestionForm />
+        <QuestionForm save={props.save} answerTag={'input'}/>
         <div className="field">
           <div className="control">
-            <textarea className="textarea" id='answer' rows={arows} placeholder="Answer" name="answer" value={inputs.answer} onChange={handleInputChange}></textarea>
+            <textarea className="textarea" id='answer' rows={arows} placeholder="Answer"></textarea>
           </div>
         </div>
         </>

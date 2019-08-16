@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
 
 function CreateForm() {
 
   const [Formfields, setFormField] = useState([]);
+  const [save, setSave] = useState(false);
+
+  // function addTextField() {
+  //   setFormField(Formfields.concat(<Formfield key={Formfields.length} save={save}/>));
+  // }
+  // function addCheckBox() {
+  //   setFormField(Formfields.concat(<CheckBox key={Formfields.length} save={save}/>));
+  // }
 
   function addTextField() {
-    setFormField(Formfields.concat(<Formfield key={Formfields.length}/>));
+    setFormField(Formfields.concat('textBox'));
   }
   function addCheckBox() {
-    setFormField(Formfields.concat(<CheckBox key={Formfields.length}/>));
+    setFormField(Formfields.concat('checkBox'));
   }
 
-  function handleSubmit(e) {
-    console.log(e);
+
+  function plzsave() {
+    console.log("WHY!!!!!");
+    setSave(true);
   }
+ 
+  let updatedFormFields = Formfields.map((formfield,index) =>{
+    if (formfield === 'textBox'){
+      return <Formfield key={index} save={save}/>
+    }else{
+      return <CheckBox key={index} save={save}/>
+    }
+  });
 
   return (
     <div className="container is-small">
@@ -25,8 +43,8 @@ function CreateForm() {
         <span className="button is-danger">Drop Down</span>
       </div>
       <form>
-        {Formfields}
-        <input className="button" type="submit" onClick={handleSubmit} value="Submit Form"></input>
+        {updatedFormFields}
+        <input className="button" onClick={plzsave} value="Submit Form"></input>
       </form>
     </div>
   )
