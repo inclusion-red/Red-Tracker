@@ -46,7 +46,7 @@ function QuestionForm(props) {
 
 QuestionForm.propTypes =  {
   answerTag: PropTypes.string,
-  save: PropTypes.string.bool
+  save: PropTypes.string
 }
 
 export default QuestionForm
