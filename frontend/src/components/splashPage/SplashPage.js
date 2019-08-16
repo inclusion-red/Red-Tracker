@@ -81,11 +81,11 @@ function App() {
             </Typography>
           </CardContent>
           <CardActions className={classes.buttonWrapper}>
-            <Button size="large" className={classes.applyBtn}>
-              <Link to="/Login" className={cssStyles.link}>
+            <Link to="/Login" className={cssStyles.link}>
+              <Button size="large" className={classes.applyBtn}>
                 Login
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </CardActions>
         </div>
         <div className={`${classes.cardSection} ${classes.secondSection}`}>
@@ -102,11 +102,11 @@ function App() {
             </Typography>
           </CardContent>
           <CardActions className={classes.buttonWrapper}>
-            <Button size="large" className={classes.applyBtn}>
-              <Link to="/applicantforms" className={cssStyles.link}>
+            <Link to="/applicantforms" className={cssStyles.link}>
+              <Button size="large" className={classes.applyBtn}>
                 Find Application
-              </Link>
-            </Button>
+              </Button>
+          </Link>
           </CardActions>
         </div>
       </Card>
