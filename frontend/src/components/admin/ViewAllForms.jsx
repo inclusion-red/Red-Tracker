@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ViewAllForms.css';
 import { LinkRow } from '../reusable/Row';
+import { formatDate } from '../helpers/formattext';
 
 // this page is for an admin to view all the forms
 // then the admin can click on a form and update
@@ -59,7 +60,7 @@ export default class AllForms extends React.Component {
       <FormRow
         key={`form-row-${formData.id}`}
         delay={`${delay}ms`}
-        createdat={formData.createdAt}
+        createdat={formatDate(formData.createdAt)}
         title={formData.title}
         active={formData.active}
         to={`/Admin/form/${formData.id}`}/>
