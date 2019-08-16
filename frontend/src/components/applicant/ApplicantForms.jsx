@@ -46,6 +46,7 @@ export default class ApplicationForm extends React.Component {
   createFormRow(formData, delay) {
     return (
       <FormRow
+        key={`form-row-${formData.id}`}
         delay={`${delay}ms`}
         createdat={formatDate(formData.createdAt)}
         title={formData.title}
@@ -55,8 +56,11 @@ export default class ApplicationForm extends React.Component {
   }
 
   render() {
+    let delay = 350;
     let Forms = this.state.forms.map((e) => {
-      return this.createFormRow(e);
+      let row = this.createFormRow(e, delay);
+      delay+=350;
+      return row;
     })
     return (
       <div className='all-forms'>
