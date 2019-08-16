@@ -33,8 +33,10 @@ router.get('/:userid/:formid/', (req, res, next) => {
       where: {id: formId},
       include: [{
         model: FormField,
+        where: {formId: formId },
         include: [{
-          model: ApplicantForm
+          model: ApplicantForm,
+          where: {formId: formId, applicantId: userId}
         }]
       }]
     }
