@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ViewAllForms.css';
 import Row from '../reusable/Row';
 
-function FormRow({ createdat, title, active }) {
-  return (
+function FormRow({ createdat, title }) {
+  return(
     <Row>
       <div className='date'>
         { createdat }
       </div>
       <div className='row-title'>
         { title }
-      </div>
-      <div className={`status ${active}`}>
-        { active ? 'Is Live' : 'Not Live' }
       </div>
     </Row>
   )
@@ -22,15 +18,9 @@ function FormRow({ createdat, title, active }) {
 FormRow.propTypes = {
   createdat: PropTypes.string,
   title: PropTypes.string,
-  active: PropTypes.bool,
 };
 
-
-// todo:
-// - should fetch data
-// - rows should be links
-//
-export default class AllForms extends React.Component {
+export default class ApplicationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +58,7 @@ export default class AllForms extends React.Component {
         createdat={formData.createdat}
         title={formData.title}
         active={formData.active}/>
-    )
+    );
   }
 
   render() {

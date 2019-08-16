@@ -4,7 +4,7 @@ import React from 'react';
 function mainPage() {
 
   return (
-    <section className="hero is-primary has-text-centered is-fullheight" >
+    <section className="hero is-primary has-text-centered is-fullheight" style={{ height: "auto", minHeight: "calc(100vh - 64px)"}}>
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
