@@ -19,9 +19,10 @@ export default class ViewSingleFormAdmin extends React.Component {
   }
 
   render() {
-    console.log(this.state.form);
+    // console.log('forms stuff', this.state.form);
     return(
       <div>
+        {this.state.form.title}
         Admin form { this.props.match.params.formid }
       </div>
     )
