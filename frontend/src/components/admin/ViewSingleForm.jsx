@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// this page is to show a single form for an admin to update or change
+
 export default class ViewSingleFormAdmin extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ export default class ViewSingleFormAdmin extends React.Component {
     console.log(this.state.form);
     return(
       <div>
-        { this.props.match.params.formid }
+        Admin form { this.props.match.params.formid }
       </div>
     )
   }

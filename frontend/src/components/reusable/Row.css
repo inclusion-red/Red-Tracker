@@ -9,4 +9,10 @@
   border: 1px solid rgb(181, 181, 181);
   border-radius: 5px;
   max-width: 750px;
+  /* animation-name: fadein; */
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
