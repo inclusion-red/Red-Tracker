@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ViewAllForms.css';
-import Row from '../reusable/Row';
+import { LinkRow } from '../reusable/Row';
 
-function FormRow({ createdat, title, active }) {
+function FormRow({ createdat, title, active, to, delay }) {
   return (
-    <Row>
+    <LinkRow to={to} delay={delay}>
       <div className='date'>
         { createdat }
       </div>
@@ -15,11 +15,13 @@ function FormRow({ createdat, title, active }) {
       <div className={`status ${active}`}>
         { active ? 'Is Live' : 'Not Live' }
       </div>
-    </Row>
+    </LinkRow>
   )
 }
 
 FormRow.propTypes = {
+  delay: PropTypes.string,
+  to: PropTypes.string,
   createdat: PropTypes.string,
   title: PropTypes.string,
   active: PropTypes.bool,
@@ -37,18 +39,39 @@ export default class AllForms extends React.Component {
       forms: [{
         createdat: 'Sept 1, 2012',
         title: 'Some Form',
-        active: false
+        active: false,
+        id: 1
       },
       {
         createdat: 'Oct 1, 2012',
         title: 'Another Form',
-        active: false
+        active: false,
+        id: 2
       },
       {
         createdat: 'Nov 1, 2012',
         title: 'A third form',
-        active: false
-      }]
+        active: false,
+        id: 3
+      },
+      {
+        createdat: 'Sept 1, 2012',
+        title: 'Some Form',
+        active: false,
+        id: 4
+      },
+      {
+        createdat: 'Oct 1, 2012',
+        title: 'Another Form',
+        active: false,
+        id: 5
+      },
+      {
+        createdat: 'Nov 1, 2012',
+        title: 'A third form',
+        active: false,
+        id: 6
+      }],
     }
   }
 
@@ -62,18 +85,23 @@ export default class AllForms extends React.Component {
     //   .catch( e => console.log(e));
   }
 
-  createFormRow(formData) {
+  createFormRow(formData, delay) {
     return (
       <FormRow
+        delay={`${delay}ms`}
         createdat={formData.createdat}
         title={formData.title}
-        active={formData.active}/>
+        active={formData.active}
+        to={`/Admin/form/${formData.id}`}/>
     )
   }
 
   render() {
+    let delay = 350;
     let Forms = this.state.forms.map((e) => {
-      return this.createFormRow(e);
+      let row = this.createFormRow(e, delay);
+      delay+=350;
+      return row;
     })
     return (
       <div className='all-forms'>
