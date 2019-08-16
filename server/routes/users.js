@@ -1,7 +1,7 @@
 const router = require('express').Router();
 //const { getAllUsers, getUserFormsById, getUserFormResponces } = require('../db/queries');
 //const {Admin, Applicant, ApplicantForm, ApplicantResponse, Comment, Form, FormField} = require('../db/models');
-const {Applicant, Form, FormField, ApplicantResponse} = require('../db/models');
+const {Applicant, Form, FormField, ApplicantForm} = require('../db/models');
 
 // get all users (i don't think we need this)
 router.get('/', (req, res) => {
@@ -30,10 +30,11 @@ router.get('/:userid/:formid/', (req, res, next) => {
     where: {id: userId},
     include: [{
       model: Form,
+      where: {id: formId},
       include: [{
         model: FormField,
         include: [{
-          model: ApplicantResponse
+          model: ApplicantForm
         }]
       }]
     }

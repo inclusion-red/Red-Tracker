@@ -9,7 +9,7 @@ const db = require('../config')
 //app resp. belongsto application form !
 //app. form hasmany app. resp. !
 
-module.exports = db.define('ApplicantForm', {
+module.exports = db.define('applicantForm', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
