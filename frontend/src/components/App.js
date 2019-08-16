@@ -8,6 +8,7 @@ import Mainpage from "./applicant/NewApplicant";
 import Admin from "./admin/AdminPage";
 // import Applicants from "./applicant/ApplicantsIndex";
 import Applicants from "./admin/ViewAllApplications";
+import ApplicantForms from "./applicant/ApplicantForms";
 import AllForms from "./admin/ViewAllForms";
 import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
@@ -25,6 +26,7 @@ const App = () => (
       <Route exact path="/MainPage" component={Mainpage} />
       <Route exact path="/Admin" component={Admin} />
       <Route exact path="/Applicants" component={Applicants} />
+      <Route exact path="/applicantforms" component={ApplicantForms} />
       <Route exact path="/allforms" component={AllForms} />
       <Route exact path="/newForm" component={NewForm} />
     </Switch>

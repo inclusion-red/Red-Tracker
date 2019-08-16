@@ -97,7 +97,7 @@ function App() {
           </CardContent>
           <CardActions className={classes.buttonWrapper}>
             <Button size="large" className={classes.applyBtn}>
-              <Link to="/MainPage" className={cssStyles.link}>
+              <Link to="/applicantforms" className={cssStyles.link}>
                 Find Application
               </Link>
             </Button>
