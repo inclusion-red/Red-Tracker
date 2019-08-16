@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
@@ -23,12 +23,27 @@ const useStyles = makeStyles(theme => ({
 
 const handleClick = async () => {
   let response = await axios.get("/api/admin/logout");
-  window.data = undefined;
+  localStorage.setItem("data", undefined);
 };
 
 const Navbar = () => {
   let classes = useStyles();
   const [user, setUser] = useState(false);
+  //let data = window.data;
+  //console.log("Data: _____", data);
+  let output = localStorage.getItem("data");
+  console.log("OUtput: ", output);
+  // if (output) {
+  //   setUser(true);
+  // }
+
+  // useEffect(() => {
+  //   if (output) {
+  //     setUser(true);
+  //   }
+  //   console.log("User: ", user);
+  // });
+
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -37,7 +52,7 @@ const Navbar = () => {
             <span className={cssStyles.redText}>RED</span> TRACKER
           </Link>
         </Typography>
-        {window.data ? (
+        {output & (output !== undefined) ? (
           <Button onClick={handleClick} className={classes.button}>
             Logout
           </Button>
