@@ -6,13 +6,14 @@ Comment.belongsTo(Admin);
 
 ApplicantResponse.belongsTo(ApplicantForm);
 ApplicantResponse.belongsTo(FormField);
+FormField.hasMany(ApplicantResponse);
 
 
 Form.belongsToMany(Admin, {through: 'FormAdmin'});
 Admin.belongsToMany(Form, {through: 'FormAdmin'});
 
 Form.belongsToMany(Applicant, {through: 'ApplicantForm', foreignKey: 'formId', constraints: false});
-Admin.belongsToMany(Form, {through: 'ApplicantForm', foreignKey: 'applicantId', constraints: false});
+Applicant.belongsToMany(Form, {through: 'ApplicantForm', foreignKey: 'applicantId', constraints: false});
 
 FormField.belongsTo(Form);
 Form.hasMany(FormField);

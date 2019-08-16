@@ -1,21 +1,21 @@
 [
     {
       "ApplicantFormId": 1,
-      "formFieldId": 1,
+      "formfieldId": 1,
       "input_value": "hi"
     },
     {
         "ApplicantFormId": 1,
-        "formFieldId": 2,
+        "formfieldId": 2,
         "input_value": "hello"
     },
     {
         "ApplicantFormId": 2,
-        "form_fieldId": 1,
+        "formfieldId": 1,
         "input_value": "hello"
     },
     {   "ApplicantFormId": 2,
-        "formFieldId": 2,
+        "formfieldId": 2,
         "input_value": "hi"
     }
   ]
