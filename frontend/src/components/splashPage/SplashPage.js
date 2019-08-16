@@ -51,6 +51,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column"
   },
+  // bad naming.....
+  secondSection: {
+    "@media(min-width: 768px)": {
+      borderLeft: "1px solid rgb(167, 167, 167)"
+    }
+  },
   buttonWrapper: {
     marginTop: "auto"
   }
@@ -71,7 +77,7 @@ function App() {
               Admin
             </Typography>
             <Typography variant="body1">
-              Create, manage, and track applications. With easy to use interface. Log in to get Started
+              Create, manage, and track applications. With easy to use interface. Log in to get Started.
             </Typography>
           </CardContent>
           <CardActions className={classes.buttonWrapper}>
@@ -82,7 +88,7 @@ function App() {
             </Button>
           </CardActions>
         </div>
-        <div className={classes.cardSection}>
+        <div className={`${classes.cardSection} ${classes.secondSection}`}>
           <CardContent className={classes.cardContent}>
             <Typography
               className={classes.title}
@@ -92,7 +98,7 @@ function App() {
               Applicant
             </Typography>
             <Typography variant="body1">
-              Or if you are a an applicant check the url or check for your application
+              Find an application to fill or browse our forms. Click below to get started.
             </Typography>
           </CardContent>
           <CardActions className={classes.buttonWrapper}>

@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
     "@media(min-width: 768px)": {
       width: "40%"
     },
-    padding: "10px"
+    padding: "10px",
+    textAlign: 'center'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -28,8 +29,8 @@ const useStyles = makeStyles(theme => ({
     color: "#fff",
     backgroundColor: theme.palette.secondary.light,
     alignItems: "center",
-    marginTop: "5px"
-  }
+    margin: "5px auto"
+  },
 }));
 
 const Login = () => {
@@ -54,9 +55,15 @@ const Login = () => {
 
   return (
     <div>
-      <Typography />
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
+          <Typography
+            className={classes.title}
+            variant="h4"
+            color="textSecondary"
+            gutterBottom>
+            Log In to Admin
+          </Typography>
           <TextField
             required
             id="outlined-required"
