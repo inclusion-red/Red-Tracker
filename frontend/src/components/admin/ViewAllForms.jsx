@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import './ViewAllForms.css';
 import { LinkRow } from '../reusable/Row';
 
+// this page is for an admin to view all the forms
+// then the admin can click on a form and update
+// (not sure if we should add create new since we have a button on the admin page)
+
 function FormRow({ createdat, title, active, to, delay }) {
   return (
     <LinkRow to={to} delay={delay}>

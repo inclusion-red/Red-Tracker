@@ -10,10 +10,10 @@ export function LinkRow({ className, children, to, delay }) {
         { children }
       </div>
     </Link>
-  )
+  );
 }
 
-Row.propTypes = {
+LinkRow.propTypes = {
   delay: PropTypes.string,
   to: PropTypes.string,
   className: PropTypes.string,
