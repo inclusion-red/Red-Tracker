@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LinkRow } from '../reusable/Row';
+import { formatDate } from '../helpers/formattext';
+
 
 // thi page is for applicants to view all available applications.
 
@@ -45,7 +47,7 @@ export default class ApplicationForm extends React.Component {
     return (
       <FormRow
         delay={`${delay}ms`}
-        createdat={formData.createdAt}
+        createdat={formatDate(formData.createdAt)}
         title={formData.title}
         active={formData.active}
         to={`/Applicants/form/${formData.id}`}/>
