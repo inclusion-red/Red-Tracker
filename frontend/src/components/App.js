@@ -8,8 +8,10 @@ import Mainpage from "./applicant/NewApplicant";
 import Admin from "./admin/AdminPage";
 // import Applicants from "./applicant/ApplicantsIndex";
 import Applicants from "./admin/ViewAllApplications";
+import AdminAllForms from "./admin/ViewAllForms";
+import ViewSingleFormAdmin from "./admin/ViewSingleForm";
+import ViewSingleFormApplicant from "./applicant/ViewSingleForm";
 import ApplicantForms from "./applicant/ApplicantForms";
-import AllForms from "./admin/ViewAllForms";
 import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
@@ -25,9 +27,11 @@ const App = () => (
     <Switch>
       <Route exact path="/MainPage" component={Mainpage} />
       <Route exact path="/Admin" component={Admin} />
+      <Route exact path="/Admin/form" component={AdminAllForms} />
+      <Route exact path="/Admin/form/:formid" component={ViewSingleFormAdmin} />
       <Route exact path="/Applicants" component={Applicants} />
+      <Route exact path="/Applicants/form/:formid" component={ViewSingleFormApplicant} />
       <Route exact path="/applicantforms" component={ApplicantForms} />
-      <Route exact path="/allforms" component={AllForms} />
       <Route exact path="/newForm" component={NewForm} />
     </Switch>
   </HashRouter>
