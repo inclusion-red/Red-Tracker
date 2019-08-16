@@ -28,42 +28,24 @@ export default class ApplicationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      forms: [{
-        createdat: 'Sept 1, 2012',
-        title: 'Some Form',
-        active: false,
-        id: 1
-      },
-      {
-        createdat: 'Oct 1, 2012',
-        title: 'Another Form',
-        active: false,
-        id: 2
-
-      },
-      {
-        createdat: 'Nov 1, 2012',
-        title: 'A third form',
-        active: false,
-        id: 3
-      }]
+      forms: []
     }
   }
 
   //todo
   // update with with endpoint
   componentWillMount() {
-    // fetch('/api/user')
-    //   .then(d => d.json())
-    //   .then( forms => this.setState({ forms: forms.forms || [] }))
-    //   .catch( e => console.log(e));
+    fetch('/api/form/active')
+      .then(d => d.json())
+      .then( forms => this.setState({ forms: forms.forms || [] }))
+      .catch( e => console.log(e));
   }
 
   createFormRow(formData, delay) {
     return (
       <FormRow
         delay={`${delay}ms`}
-        createdat={formData.createdat}
+        createdat={formData.createdAt}
         title={formData.title}
         active={formData.active}
         to={`/Applicants/form/${formData.id}`}/>

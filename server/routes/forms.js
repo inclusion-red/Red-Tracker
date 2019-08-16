@@ -9,6 +9,16 @@ router.get('/', (req, res, next) => {
     .catch((e) => next(e));
 });
 
+router.get('/active', (req, res, next) => {
+  Form.findAll({
+    where: {
+      active: true
+    }
+  })
+    .then((forms) => res.send({ forms: forms }))
+    .catch((e) => next(e));
+});
+
 // get form by id get forms data and and form inputs for one single form
 router.get('/:id', (req, res, next) => {
   let formId = req.params.id;
