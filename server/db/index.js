@@ -15,6 +15,7 @@ Form.belongsToMany(Applicant, {through: 'ApplicantForm', foreignKey: 'formId', c
 Admin.belongsToMany(Form, {through: 'ApplicantForm', foreignKey: 'applicantId', constraints: false});
 
 FormField.belongsTo(Form);
+Form.hasMany(FormField);
 
 module.exports = {
   Admin,
