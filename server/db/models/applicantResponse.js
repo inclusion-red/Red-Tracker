@@ -6,7 +6,7 @@ const db = require('../config');
 //app. form hasmany app. resp.
 
 // one app. resp. belongsto one form field !
-module.exports = db.define('applicant_response', {
+module.exports = db.define('applicantresponse', {
   input_value: {
     type: Sequelize.TEXT,
     allowNull: false
