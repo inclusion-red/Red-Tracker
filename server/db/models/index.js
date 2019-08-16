@@ -10,16 +10,10 @@ const jwt = require("jsonwebtoken");
 
 Admin.prototype.setPassword = function(password) {
   const saltRounds = 10;
-  console.log("Password: ", password);
   bcrypt.genSalt(saltRounds, (err, salt) => {
-    //console.log("This this this: ", this);
     this.dataValues.salt = salt;
-    console.log("Salt & Password: ", password, salt);
     bcrypt.hash(password, salt, (err, hash) => {
-      console.log("Errrrrrrooooor: ", err);
-      console.log("Hashy ______: ", hash);
       this.dataValues.hash = hash;
-      console.log("Salty hash: ", this);
     });
   });
 };

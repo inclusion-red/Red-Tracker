@@ -40,16 +40,17 @@ const SignUp = () => {
   const handleSubmit = async (email, password) => {
     console.log("Sign Up Info: ", email, password, name);
     //I want to send the email and password to passport.js to authenticate admin/user
-    let response = await axios.post("/api/admin/signup", {
+    let response = await axios.post("api/admin/signup", {
       email: email,
       password: password,
       name: name
     });
     let data = await response.json();
-    if (data) {
-      setUser(true);
-      //send "true user" to Navbar
-    }
+    console.log("Data: ", data);
+    // if (data) {
+    //   setUser(true);
+    //   //send "true user" to Navbar
+    // }
   };
 
   return (
