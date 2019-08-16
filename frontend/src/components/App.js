@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, HashRouter } from "react-router-dom";
 import "./App.css";
 import "./App.sass";
-import history from "../history";
 
 import Splashpage from "./splashPage/SplashPage";
 import Mainpage from "./applicant/NewApplicant";
@@ -20,7 +19,7 @@ import Layout from "./layout/Layout";
 import SignUp from "./signup/SignUp";
 
 const App = () => (
-  <HashRouter history={history} forceRefresh={true}>
+  <HashRouter>
     <Layout>
       <Route exact path="/" component={Splashpage} />
       <Route exact path="/Login" component={Login} />
