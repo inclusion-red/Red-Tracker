@@ -10,7 +10,7 @@ import { LinkRow } from '../reusable/Row';
 class ApplicantionRow extends React.Component {
   render() {
     return (
-      <LinkRow to={this.props.to}>
+      <LinkRow to={this.props.to} delay={this.props.delay}>
         <div className='date'>
           {this.props.createdat}
         </div>
@@ -26,6 +26,7 @@ class ApplicantionRow extends React.Component {
 }
 
 ApplicantionRow.propTypes = {
+  delay: PropTypes.string,
   to: PropTypes.string,
   createdat: PropTypes.string,
   email: PropTypes.string,
@@ -67,9 +68,10 @@ export default class AllApplicants extends React.Component {
     //   .catch( e => console.log(e));
   }
 
-  createApplicantRow(applicantData) {
+  createApplicantRow(applicantData, delay) {
     return (
       <ApplicantionRow
+        delay={`${delay}ms`}
         createdat={applicantData.createdat}
         email={applicantData.email}
         status={applicantData.status}
@@ -78,8 +80,11 @@ export default class AllApplicants extends React.Component {
   }
 
   render() {
+    let delay = 350;
     let ApplicationsForms = this.state.forms.map((e) => {
-      return this.createApplicantRow(e);
+      let row = this.createApplicantRow(e, delay);
+      delay+=350;
+      return row;
     })
     return (
       <div className='application-index'>
