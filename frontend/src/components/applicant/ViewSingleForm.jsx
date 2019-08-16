@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// this page should be for an applicant to view a form and fill it out.
+// - it should fetch the form with id
+// - and should be able to send a post request when it is done filling it out
 
 export default class ViewSingleFormApplicant extends React.Component {
   constructor(props) {
@@ -10,7 +13,7 @@ export default class ViewSingleFormApplicant extends React.Component {
     }
   }
 
-  // should return only if it is active if not then display an error
+  // should return only if it is active if not then display an error (probably should be a different route)
   componentWillMount() {
     fetch(`/api/form/${this.props.match.params.formid}`)
       .then( d => d.json() )
@@ -19,10 +22,9 @@ export default class ViewSingleFormApplicant extends React.Component {
   }
 
   render() {
-    console.log(this.state.form);
     return(
       <div>
-        { this.props.match.params.formid }
+        Applicant form { this.props.match.params.formid }
       </div>
     )
   }

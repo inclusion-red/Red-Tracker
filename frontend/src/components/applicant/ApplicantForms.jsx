@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Row from '../reusable/Row';
+import { LinkRow } from '../reusable/Row';
 
-function FormRow({ createdat, title }) {
+// thi page is for applicants to view all available applications.
+
+function FormRow({ createdat, title, to, delay }) {
   return(
-    <Row>
+    <LinkRow to={to} delay={delay}>
       <div className='date'>
         { createdat }
       </div>
       <div className='row-title'>
         { title }
       </div>
-    </Row>
+    </LinkRow>
   )
 }
 
 FormRow.propTypes = {
+  delay: PropTypes.string,
+  to: PropTypes.string,
   createdat: PropTypes.string,
   title: PropTypes.string,
 };
@@ -27,24 +31,27 @@ export default class ApplicationForm extends React.Component {
       forms: [{
         createdat: 'Sept 1, 2012',
         title: 'Some Form',
-        active: false
+        active: false,
+        id: 1
       },
       {
         createdat: 'Oct 1, 2012',
         title: 'Another Form',
-        active: false
+        active: false,
+        id: 2
+
       },
       {
         createdat: 'Nov 1, 2012',
         title: 'A third form',
-        active: false
+        active: false,
+        id: 3
       }]
     }
   }
 
   //todo
   // update with with endpoint
-  // application row click should be a link
   componentWillMount() {
     // fetch('/api/user')
     //   .then(d => d.json())
@@ -52,12 +59,14 @@ export default class ApplicationForm extends React.Component {
     //   .catch( e => console.log(e));
   }
 
-  createFormRow(formData) {
+  createFormRow(formData, delay) {
     return (
       <FormRow
+        delay={`${delay}ms`}
         createdat={formData.createdat}
         title={formData.title}
-        active={formData.active}/>
+        active={formData.active}
+        to={`/Applicants/form/${formData.id}`}/>
     );
   }
 
