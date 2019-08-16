@@ -11,6 +11,7 @@ import Applicants from "./admin/ViewAllApplications";
 import AdminAllForms from "./admin/ViewAllForms";
 import ViewSingleFormAdmin from "./admin/ViewSingleForm";
 import ViewSingleFormApplicant from "./applicant/ViewSingleForm";
+import ApplicantForms from "./applicant/ApplicantForms";
 import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
@@ -30,6 +31,7 @@ const App = () => (
       <Route exact path="/Admin/form/:formid" component={ViewSingleFormAdmin} />
       <Route exact path="/Applicants" component={Applicants} />
       <Route exact path="/Applicants/form/:formid" component={ViewSingleFormApplicant} />
+      <Route exact path="/applicantforms" component={ApplicantForms} />
       <Route exact path="/newForm" component={NewForm} />
     </Switch>
   </HashRouter>

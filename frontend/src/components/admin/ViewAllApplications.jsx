@@ -2,11 +2,12 @@ import React from 'react';
 // import applicants from './dummyDB/applicants'
 import './ApplicantsIndex.css';
 import PropTypes from 'prop-types';
+import Row from '../reusable/Row';
 
 class ApplicantionRow extends React.Component {
   render() {
     return (
-      <div className='applicant-row'>
+      <Row>
         <div className='date'>
           {this.props.createdat}
         </div>
@@ -16,7 +17,7 @@ class ApplicantionRow extends React.Component {
         <div className={`status ${this.props.status}`}>
           {this.props.status}
         </div>
-      </div>
+      </Row>
     )
   }
 }

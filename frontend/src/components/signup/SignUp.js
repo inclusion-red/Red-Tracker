@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme => ({
     padding: "10px",
     "@media(min-width: 768px)": {
       width: "40%"
-    }
+    },
+    textAlign: 'center'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -57,6 +58,13 @@ const SignUp = () => {
       <Typography />
       <form className={classes.container} noValidate autoComplete="off">
         <Card className={classes.card}>
+          <Typography
+            className={classes.title}
+            variant="h4"
+            color="textSecondary"
+            gutterBottom>
+            Sing Up a new Admin
+          </Typography>
           <TextField
             required
             id="outlined-required"
