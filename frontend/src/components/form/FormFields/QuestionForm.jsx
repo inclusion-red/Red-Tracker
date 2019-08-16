@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import useForm from '../../customHooks/useForm';
 import {test} from '../../../util/dbApi/dbApi';
+import PropTypes from 'prop-types';
+
 
 
 function QuestionForm(props) {
 
-  const { inputs, handleInputChange,handleSubmit } = useForm();
+  const { inputs, handleInputChange } = useForm();
   const [qrows, UseQrows] = useState(0);
 
   useEffect(() => {
@@ -20,14 +22,14 @@ function QuestionForm(props) {
         "active": true,
         "title": "tempForm",
         "formfields": [
-            {
-                "tag": "input",
-                "question": inputs.question,
-                "class": "",
-                "other_setting": null
-            },
+          {
+            "tag": "input",
+            "question": inputs.question,
+            "class": "",
+            "other_setting": null
+          },
         ]
-    }
+      }
       test(userData);
     }
   })
@@ -40,6 +42,11 @@ function QuestionForm(props) {
       </div>
     </div>
   )
+}
+
+QuestionForm.propTypes =  {
+  answerTag: PropTypes.string,
+  save: PropTypes.string.bool
 }
 
 export default QuestionForm

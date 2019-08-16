@@ -1,6 +1,7 @@
 import React,{useState, useEffect}from 'react';
-import useForm from '../../customHooks/useForm';
+// import useForm from '../../customHooks/useForm';
 import QuestionForm from './QuestionForm';
+import PropTypes from 'prop-types';
 
 function InputField(props) {
 
@@ -22,6 +23,9 @@ function InputField(props) {
         </div>
         </>
   )
+}
+InputField.propTypes = {
+  save: PropTypes.bool
 }
 
 export default InputField
