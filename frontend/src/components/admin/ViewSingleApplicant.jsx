@@ -27,7 +27,7 @@ export default class ViewSingleApplicant extends React.Component{
 
   render() {
     return(
-      <div class='view-wrapper'>
+      <div className='view-wrapper'>
         <div className='view-single-applicant'>
           <header>{this.state.title}</header>
           <h3>Date Created - August 3, 2019</h3>
