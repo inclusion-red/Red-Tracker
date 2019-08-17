@@ -20,5 +20,9 @@ module.exports = db.define('form', {
   title: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  formFields: {
+    type: Sequelize.JSON,
+    allowNull: true
   }
 })

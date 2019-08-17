@@ -21,6 +21,18 @@ function CreateForm() {
     setFormField(Formfields.concat('checkBox'));
   }
 
+  // let userData={
+  //   "active": true,
+  //   "title": "",
+  //   "formfields": [
+  //     {
+  //       "tag": "input",
+  //       "question": inputs.question,
+  //       "class": "",
+  //       "other_setting": null
+  //     },
+  //   ]
+  // }
 
   function plzsave() {
     console.log("WHY!!!!!");
@@ -34,6 +46,8 @@ function CreateForm() {
       return <CheckBox key={index} save={save}/>
     }
   });
+
+  debugger
 
   return (
     <div className="container is-small">
