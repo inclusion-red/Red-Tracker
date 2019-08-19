@@ -8,8 +8,8 @@ function InputField(props) {
 
   const [arows, UseArows] = useState(0);
 
-  const [{ formFields }, dispatch] = useStateValue();
-  console.log(formFields)
+  const [{ newFormFields }, dispatch] = useStateValue();
+  console.log(newFormFields)
   console.log(dispatch)
   useEffect(() => {
     const answerArea = document.getElementById("answer");
@@ -17,10 +17,19 @@ function InputField(props) {
     UseArows( ansRowCount + .5);
   });
   
-  dispatch({
-    type: 'addField',
-    newFormField: 1
+  useEffect(() => {
+    if(props.save){
+      dispatch({
+        type: 'addField',
+        newFormField: 1
+      })
+    }
   })
+ 
+
+
+
+  
   return (
             
               <>

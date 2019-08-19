@@ -1,4 +1,4 @@
-import React,{useState, createContext, useContext, useReduce}from 'react';
+import React,{useState}from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
 import { StateProvider } from './stateProvider';
@@ -7,7 +7,7 @@ function CreateForm() {
 
   const [Formfields, setFormField] = useState([]);
   const [save, setSave] = useState(false);
-  const questions=[];
+  // const questions=[];
   // function addTextField() {
   //   setFormField(Formfields.concat(<Formfield key={Formfields.length} save={save}/>));
   // }
@@ -22,10 +22,10 @@ function CreateForm() {
     setFormField(Formfields.concat('checkBox'));
   }
 
-  const addField = (newField) =>{
-    questions.push(newField);
-    console.log(questions);
-  };
+  // const addField = (newField) =>{
+  //   questions.push(newField);
+  //   console.log(questions);
+  // };
 
   // let userData={
   //   "active": true,
@@ -41,22 +41,24 @@ function CreateForm() {
   // }
 
   const initialState = {
-    formFields: []
+    newFormFields: []
   };
 
   const reducer = (state, action) => {
+    
     switch (action.type) {
-      case 'addField':
-        return {
-          formFields: state.formFields.concat(action.newFormField)
-        };
+    case 'addField':
+      return {
+        newFormFields: state.newFormFields.concat(action.newFormField)
+      };
         
-      default:
-        return state;
+    default:
+      return state;
     }
-  }
+  };
+  
   function plzsave() {
-    console.log("WHY!!!!!");
+    
     setSave(true);
   }
  
@@ -70,17 +72,17 @@ function CreateForm() {
  
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-    <div className="container is-small">
-      <div className="buttons are-large is-centered">
-        <span className="button is-success" onClick={addTextField}>TextField</span>
-        <span className="button is-info" onClick={addCheckBox}>Multiple Choice</span>
-        <span className="button is-danger">Drop Down</span>
+      <div className="container is-small">
+        <div className="buttons are-large is-centered">
+          <span className="button is-success" onClick={addTextField}>TextField</span>
+          <span className="button is-info" onClick={addCheckBox}>Multiple Choice</span>
+          <span className="button is-danger">Drop Down</span>
+        </div>
+        <form>
+          {updatedFormFields}
+          <input className="button" onClick={plzsave} value="Submit Form"></input>
+        </form>
       </div>
-      <form>
-        {updatedFormFields}
-        <input className="button" onClick={plzsave} value="Submit Form"></input>
-      </form>
-    </div>
     </StateProvider>
 
   )
