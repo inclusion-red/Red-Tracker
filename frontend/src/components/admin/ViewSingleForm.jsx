@@ -13,19 +13,43 @@ export default class ViewSingleFormAdmin extends React.Component {
 
   componentWillMount() {
     fetch(`/api/form/${this.props.match.params.formid}`)
-      .then( d => d.json() )
-      .then( form => this.setState({form}) )
-      .catch( e => console.log('something went wrong', e))
+      .then(d => d.json())
+      .then(form => this.setState({ form }))
+      .catch(e => console.log('something went wrong', e))
   }
+
 
   render() {
     // console.log('forms stuff', this.state.form);
-    return(
-      <div>
-        {this.state.form.title}
-        Admin form { this.props.match.params.formid }
-      </div>
-    )
+    if (this.state.form.formFields === undefined) {
+      return null;
+    }
+    console.log(this.state)
+    let lis = this.state.form.formFields.map((ele) => {
+      if (ele.tag === 'input') {
+        return (
+          <>
+          <div className="field">
+            <div className="control">
+              <textarea className="textarea has-background-primary" id='question' row={1} name="question" value={ele.question}></textarea>
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <textarea className="textarea" id='answer'placeholder="Answer"></textarea>
+            </div>
+          </div>
+                </>  
+        )
+  }
+})
+return (
+  <div>
+    {this.state.form.title}
+    {lis}
+    Admin form {this.props.match.params.formid}
+  </div>
+)
   }
 }
 
