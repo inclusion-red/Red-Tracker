@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
-import { StateProvider, useStateValue } from './stateProvider';
+import { useStateValue } from './stateProvider';
 import { test } from '../../util/dbApi/dbApi';
 
 
@@ -24,7 +24,7 @@ function CreateForm() {
     setFormField(Formfields.concat('checkBox'));
   }
 
-  const [{ newFormFields }, dispatch] = useStateValue();
+  const [{ newFormFields }] = useStateValue();
 
   useEffect(() => {
     if (save === true && newFormFields.length > 0) {

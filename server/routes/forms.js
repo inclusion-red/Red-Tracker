@@ -50,7 +50,6 @@ router.get('/:id', (req, res, next) => {
 //   ]
 // }
 router.post('/new', async (req, res, next) => {
-  debugger
   try {
     const newFormData = {"title": req.body.title, "active": req.body.active};
     const newFormFieldsData = req.body.formFields;

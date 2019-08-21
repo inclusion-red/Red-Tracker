@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import useForm from '../../customHooks/useForm';
-import {test} from '../../../util/dbApi/dbApi';
 import PropTypes from 'prop-types';
 import  { useStateValue } from '../stateProvider';
 
@@ -26,9 +25,9 @@ function QuestionForm(props) {
         type: 'addField',
         newFormField: {
           "tag": "input",
-            "question": inputs.question,
-            "class": "",
-            "other_setting": null
+          "question": inputs.question,
+          "class": "",
+          "other_setting": null
         }
       })
     }

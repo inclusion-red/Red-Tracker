@@ -2,7 +2,6 @@ import React,{useState, useEffect}from 'react';
 // import useForm from '../../customHooks/useForm';
 import QuestionForm from './QuestionForm';
 import PropTypes from 'prop-types';
-import { useStateValue } from '../stateProvider';
 
 
 function InputField(props) {
