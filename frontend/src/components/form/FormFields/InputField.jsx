@@ -3,10 +3,10 @@ import React,{useState, useEffect}from 'react';
 import QuestionForm from './QuestionForm';
 import PropTypes from 'prop-types';
 
+
 function InputField(props) {
 
   const [arows, UseArows] = useState(0);
-
   useEffect(() => {
     const answerArea = document.getElementById("answer");
     const ansRowCount = answerArea ? answerArea.value.split("\n").length : 0;
@@ -14,15 +14,17 @@ function InputField(props) {
   });
   
   return (
-        <>
-        <QuestionForm save={props.save} answerTag={'input'}/>
-        <div className="field">
-          <div className="control">
-            <textarea className="textarea" id='answer' rows={arows} placeholder="Answer"></textarea>
-          </div>
-        </div>
-        </>
+              <>
+                <QuestionForm save={props.save} answerTag={'input'}/>
+                <div className="field">
+                  <div className="control">
+                    <textarea className="textarea" id='answer' rows={arows} placeholder="Answer"></textarea>
+                  </div>
+                </div>
+              </>
+              
   )
+
 }
 InputField.propTypes = {
   save: PropTypes.bool
