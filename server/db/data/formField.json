@@ -1,21 +1,68 @@
 [
-    {
-      "formId": 1,
-      "tag": "input",
-      "question": "name:",
-      "othersettings": {}
-    },
-    {
-      "formId": 1,
-      "tag": "textarea",
-      "question": "Why did you apply?",
-      "othersettings": {}
-    },
-    {
-      "formId": 2,
-      "tag": "input",
-      "question": "name:",
-      "class": "",
-      "othersettings": {}
-    }
+  {
+    "formId": 1,
+    "tag": "input",
+    "formFields": [
+      {
+        "tag": "input",
+        "question": "What is your name",
+        "class": "",
+        "other_setting": null
+      },
+      {
+        "tag": "input",
+        "question": "Why do you want to join the Brothers Of The Sacred Plunger?",
+        "class": "",
+        "other_setting": null
+      }
+    ]
+  },
+  {
+    "formId": 2,
+    "tag": "textarea",
+    "formFields": [
+      {
+          "tag": "input",
+          "question": "Are you rich?",
+          "class": "",
+          "other_setting": null
+      },
+      {
+          "tag": "input",
+          "question": "Prehaps.....a millioniar???",
+          "class": "",
+          "other_setting": null
+      }
+  ]
+  },
+  {
+    "formId": 3,
+    "tag": "input",
+    "formFields": [
+      {
+          "tag": "input",
+          "question": "What 's love?",
+          "class": "",
+          "other_setting": null
+      },
+      {
+          "tag": "input",
+          "question": "got to do ?",
+          "class": "",
+          "other_setting": null
+      },
+      {
+          "tag": "input",
+          "question": "with it?",
+          "class": "",
+          "other_setting": null
+      },
+      {
+          "tag": "input",
+          "question": "idk?",
+          "class": "",
+          "other_setting": null
+      }
+  ]  
+  }
 ]

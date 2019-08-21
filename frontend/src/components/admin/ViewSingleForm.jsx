@@ -31,25 +31,25 @@ export default class ViewSingleFormAdmin extends React.Component {
           <>
           <div className="field">
             <div className="control">
-              <textarea className="textarea has-background-primary" id='question' row={1} name="question" value={ele.question}></textarea>
+              <textarea className="textarea has-background-primary" id='question' rows={1} name="question" value={ele.question}></textarea>
             </div>
           </div>
           <div className="field">
             <div className="control">
-              <textarea className="textarea" id='answer'placeholder="Answer"></textarea>
+              <textarea className="textarea" id='answer'placeholder="Answer" rows={2}></textarea>
             </div>
           </div>
                 </>  
         )
-  }
-})
-return (
-  <div>
-    {this.state.form.title}
-    {lis}
+      }
+    })
+    return (
+      <div>
+        {this.state.form.title}
+        {lis}
     Admin form {this.props.match.params.formid}
-  </div>
-)
+      </div>
+    )
   }
 }
 
