@@ -50,16 +50,15 @@ router.get('/:id', (req, res, next) => {
 //   ]
 // }
 router.post('/new', async (req, res, next) => {
-  
+  debugger
   try {
     const newFormData = {"title": req.body.title, "active": req.body.active};
     const newFormFieldsData = req.body.formFields;
- 
-
+    console.log(typeof newFormFieldsData);
     const newForm = await Form.create(newFormData)
-    newForm.update({
-      formFields: newFormFieldsData
-    })
+    // newFormFieldsData.map((ele) =>  {
+    //   newForm.setFormfields(ele);
+    // })
     if (!newForm) {
       res.status(400).send({message: "can't create this form"})
     }else{

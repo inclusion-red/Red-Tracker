@@ -1,7 +1,9 @@
-import React,{useState}from 'react';
+import React, { useState, useEffect } from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
-import { StateProvider } from './stateProvider';
+import { StateProvider, useStateValue } from './stateProvider';
+import { test } from '../../util/dbApi/dbApi';
+
 
 function CreateForm() {
 
@@ -22,68 +24,46 @@ function CreateForm() {
     setFormField(Formfields.concat('checkBox'));
   }
 
-  // const addField = (newField) =>{
-  //   questions.push(newField);
-  //   console.log(questions);
-  // };
+  const [{ newFormFields }, dispatch] = useStateValue();
 
-  // let userData={
-  //   "active": true,
-  //   "title": "",
-  //   "formfields": [
-  //     {
-  //       "tag": "input",
-  //       "question": inputs.question,
-  //       "class": "",
-  //       "other_setting": null
-  //     },
-  //   ]
-  // }
-
-  const initialState = {
-    newFormFields: []
-  };
-
-  const reducer = (state, action) => {
-    
-    switch (action.type) {
-    case 'addField':
-      return {
-        newFormFields: state.newFormFields.concat(action.newFormField)
-      };
-        
-    default:
-      return state;
+  useEffect(() => {
+    if (save === true && newFormFields.length > 0) {
+      let userData = {
+        "active": true,
+        "title": "tempForm",
+        "formFields": newFormFields
+      }
+      test(userData);
     }
-  };
-  
+  })
+
+
   function plzsave() {
-    
     setSave(true);
   }
- 
-  let updatedFormFields = Formfields.map((formfield,index) =>{
-    if (formfield === 'textBox'){
-      return <Formfield key={index} save={save}/>
-    }else{
-      return <CheckBox key={index} save={save}/>
+
+  let updatedFormFields = Formfields.map((formfield, index) => {
+    if (formfield === 'textBox') {
+      return <Formfield key={index} save={save} />
+    } else {
+      return <CheckBox key={index} save={save} />
     }
   });
- 
+
   return (
-    <StateProvider initialState={initialState} reducer={reducer}>
-      <div className="container is-small">
-        <div className="buttons are-large is-centered">
-          <span className="button is-success" onClick={addTextField}>TextField</span>
-          <span className="button is-info" onClick={addCheckBox}>Multiple Choice</span>
-          <span className="button is-danger">Drop Down</span>
-        </div>
-        <form>
-          {updatedFormFields}
-          <input className="button" onClick={plzsave} value="Submit Form"></input>
-        </form>
+    // <StateProvider initialState={initialState} reducer={reducer}>
+    <div className="container is-small">
+      <div className="buttons are-large is-centered">
+        <span className="button is-success" onClick={addTextField}>TextField</span>
+        <span className="button is-info" onClick={addCheckBox}>Multiple Choice</span>
+        <span className="button is-danger">Drop Down</span>
       </div>
-    </StateProvider>
+      <form>
+        {updatedFormFields}
+        <input className="button" onClick={plzsave} value="Submit Form"></input>
+      </form>
+    </div>
+    //  </StateProvider>
 
   )
 }

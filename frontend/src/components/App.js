@@ -13,7 +13,7 @@ import ViewSingleFormAdmin from "./admin/ViewSingleForm";
 import ViewSingleApplicant from "./admin/ViewSingleApplicant";
 import ViewSingleFormApplicant from "./applicant/ViewSingleForm";
 import ApplicantForms from "./applicant/ApplicantForms";
-import NewForm from "./form/CreateForm";
+import NewForm from "./form/FormWrapper";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
 import SignUp from "./signup/SignUp";
