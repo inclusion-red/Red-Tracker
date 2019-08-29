@@ -10,6 +10,8 @@ router.post("/signup", auth.optional, async (req, res) => {
     body: { admin }
   } = req;
 
+  //console.log("Admin: ", admin);
+
   if (!admin.email) {
     return res.status(422).json({
       errors: {
@@ -29,6 +31,7 @@ router.post("/signup", auth.optional, async (req, res) => {
   Admin.create(admin)
     .then(function(admin) {
       admin.setPassword(req.body.admin.password);
+      console.log("Admin Signup: ", admin);
       return admin.save().then(() => res.json({ admin: admin.toAuthJSON() }));
     })
     .catch(function(err) {
@@ -65,12 +68,15 @@ router.post("/login", auth.optional, (req, res, next) => {
       if (err) {
         return next(err);
       }
-
+      console.log("Passport Admin: ", passportAdmin);
       if (passportAdmin) {
-        const user = passportAdmin;
-        user.token = passportAdmin.generateJWT();
+        const admin = passportAdmin;
 
-        return res.json({ user: user.toAuthJSON() });
+        admin.token = passportAdmin.generateJWT();
+
+        console.log("Admin Login: ", admin);
+
+        return res.json({ admin: admin.toAuthJSON() });
       }
 
       return status(400).info;

@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
       width: "40%"
     },
     padding: "10px",
-    textAlign: 'center'
+    textAlign: "center"
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -31,10 +31,11 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.light,
     alignItems: "center",
     margin: "5px auto"
-  },
+  }
 }));
 
-const Login = () => {
+const Login = props => {
+  let { handleUser, logger } = props;
   let classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,23 +47,17 @@ const Login = () => {
     let response = await axios.post("/api/admin/login", {
       admin: { email: email, password: password }
     });
-    let data = response;
-    localStorage.setItem("data", data);
-    window.data = data;
+    let data = await response;
+    handleUser(logger);
     console.log("Data: ", data);
     if (data) {
       setUser(true);
     }
-    //if (data) {
-    //setUser(true);
-    //send "true user" to Navbar
-    //}
   };
 
   if (user) {
     return <Redirect to="/Admin" />;
   }
-
   return (
     <div>
       <form className={classes.container} noValidate autoComplete="off">
@@ -71,7 +66,8 @@ const Login = () => {
             className={classes.title}
             variant="h4"
             color="textSecondary"
-            gutterBottom>
+            gutterBottom
+          >
             Log In to Admin
           </Typography>
           <TextField

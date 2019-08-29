@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import cssStyles from "./Navbar.module.css";
@@ -21,28 +21,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const handleClick = async () => {
-  let response = await axios.get("/api/admin/logout");
-  localStorage.setItem("data", undefined);
-};
+//localStorage.setItem("data", undefined);
+// if (logoutUser && logoutUser.data) {
+//   return <Redirect to={{ pathname: "/" }} />;
+// }
 
-const Navbar = () => {
+// if (logout && logout.data) {
+//   console.log("blahblah");
+//   return <Redirect to={from} />;
+// }
+
+// let output = localStorage.getItem("data");
+// if (output === "undefined") {
+//return <Redirect to="/" />;
+//}
+
+const Navbar = ({ logout, user }) => {
   let classes = useStyles();
-  const [user, setUser] = useState(false);
-  //let data = window.data;
-  //console.log("Data: _____", data);
-  let output = localStorage.getItem("data");
-  console.log("OUtput: ", output);
-  // if (output) {
-  //   setUser(true);
-  // }
 
-  // useEffect(() => {
-  //   if (output) {
-  //     setUser(true);
-  //   }
-  //   console.log("User: ", user);
-  // });
+  const handleClick = async () => {
+    await axios.get("/api/admin/logout");
+    logout();
+    console.log("User in Navbar: ", user);
+    return <Redirect to="/" />;
+  };
 
   return (
     <AppBar className={classes.appBar}>
@@ -52,7 +54,7 @@ const Navbar = () => {
             <span className={cssStyles.redText}>RED</span> TRACKER
           </Link>
         </Typography>
-        {output & (output !== undefined) ? (
+        {user ? (
           <Button onClick={handleClick} className={classes.button}>
             Logout
           </Button>
