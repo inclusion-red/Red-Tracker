@@ -52,7 +52,11 @@ class App extends Component {
           </Layout>
           <Switch>
             <Route exact path="/MainPage" component={Mainpage} />
-            <Route exact path="/Admin" component={Admin} />
+            <Route
+              exact
+              path="/Admin"
+              render={() => <Admin user={this.state.user} />}
+            />
             <Route exact path="/Admin/form" component={AdminAllForms} />
             <Route
               exact

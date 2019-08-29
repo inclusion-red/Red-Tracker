@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = props => {
-  let { handleUser, logger } = props;
+  let { handleUser } = props;
   let classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +48,7 @@ const Login = props => {
       admin: { email: email, password: password }
     });
     let data = await response;
-    handleUser(logger);
+    handleUser(email);
     console.log("Data: ", data);
     if (data) {
       setUser(true);
