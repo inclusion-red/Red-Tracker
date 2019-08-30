@@ -17,7 +17,7 @@ LinkRow.propTypes = {
   delay: PropTypes.string,
   to: PropTypes.string,
   className: PropTypes.string,
-  children: PropTypes.element
+  children: PropTypes.node
 }
 
 export default function Row({ className, children }) {

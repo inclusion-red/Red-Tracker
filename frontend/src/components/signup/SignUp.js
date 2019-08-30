@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, TextField, Button, Typography } from "@material-ui/core";
-import history from "../../history";
+import {
+  Card,
+  TextField,
+  Button,
+  Typography,
+  Snackbar
+} from "@material-ui/core";
+//import history from "../../history";
 import { Redirect } from "react-router-dom";
 
 import axios from "axios";
@@ -19,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     "@media(min-width: 768px)": {
       width: "40%"
     },
-    textAlign: 'center'
+    textAlign: "center"
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -48,9 +54,9 @@ const SignUp = () => {
       let response = await axios.post("/api/admin/signup", {
         admin: { email: email, password: password, name: name }
       });
-      let data = await response.data;
+      let data = response;
       console.log("Data: ", data);
-      setUser(data.admin.email);
+      setUser(true);
       if (data) {
         setUser(true);
       }
@@ -72,8 +78,9 @@ const SignUp = () => {
             className={classes.title}
             variant="h4"
             color="textSecondary"
-            gutterBottom>
-            Sing Up a new Admin
+            gutterBottom
+          >
+            Sign Up a New Admin
           </Typography>
           <TextField
             required
@@ -123,6 +130,13 @@ const SignUp = () => {
           >
             Submit
           </Button>
+          {!user ? (
+            <Snackbar>
+              <Typography>
+                Incorrect Password or Email. Please Try again
+              </Typography>
+            </Snackbar>
+          ) : null}
         </Card>
       </form>
     </div>

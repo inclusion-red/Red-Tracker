@@ -12,14 +12,23 @@ Admin.prototype.setPassword = function(password) {
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, (err, salt) => {
     this.dataValues.salt = salt;
+    console.log(" Salt -----", this.dataValues.salt);
     bcrypt.hash(password, salt, (err, hash) => {
       this.dataValues.hash = hash;
+
+      console.log(" Hash -----", this.dataValues.hash);
     });
   });
 };
 
 Admin.prototype.validatePassword = async (username, password) => {
-  const match = await bcrypt.compare(password, username.hash);
+  let admin = Admin.findOne({
+    where: {
+      email: username
+    }
+  });
+  const match = await bcrypt.compare(password, admin.hash);
+  console.log("Match: ", match);
 
   if (match) {
     return true;
