@@ -1,11 +1,11 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 function AdminPage(props) {
   let { user } = props;
 
   if (!user) {
+    // might remove Redirect since we are handling user in app.js
     return <Redirect to="/" />;
   } else {
     return (
