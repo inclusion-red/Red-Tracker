@@ -17,6 +17,8 @@ import NewForm from "./form/CreateForm";
 import Login from "./login/Login";
 import Layout from "./layout/Layout";
 import SignUp from "./signup/SignUp";
+import NoMatch from "./404/NoMatch";
+import RedirectingRoute from './reusable/RedirectingRoute';
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +39,6 @@ class App extends Component {
       <div>
         <HashRouter>
           <Layout user={this.state.user} logout={this.unsetUser.bind(this)}>
-            <Route exact path="/" component={Splashpage} />
             <Route
               exact
               path="/Login"
@@ -51,31 +52,67 @@ class App extends Component {
             <Route exact path="/SignUp" component={SignUp} />
           </Layout>
           <Switch>
+            <Route exact path="/" component={Splashpage} />
             <Route exact path="/MainPage" component={Mainpage} />
-            <Route
+            <RedirectingRoute
               exact
               path="/Admin"
-              render={() => <Admin user={this.state.user} />}
+              component={() => <Admin user={this.state.user}/>}
+              isAuthorize={this.state.user !== ''}
+              to='/'
             />
-            <Route exact path="/Admin/form" component={AdminAllForms} />
-            <Route
+            <RedirectingRoute
+              exact
+              path="/admin/form"
+              component={AdminAllForms}
+              isAuthorize={this.state.user}
+              to='/'
+            />
+            <RedirectingRoute
+              exact
+              path="/admin/form"
+              component={AdminAllForms}
+              isAuthorize={this.state.user}
+              to='/'
+            />
+            <RedirectingRoute
               exact
               path="/Admin/form/:formid"
               component={ViewSingleFormAdmin}
+              isAuthorize={this.state.user}
+              to='/'
             />
-            <Route
+            <RedirectingRoute
+              exact
+              path="/Admin/form/:formid"
+              component={ViewSingleFormAdmin}
+              isAuthorize={this.state.user}
+              to='/'
+            />
+            <RedirectingRoute
               exact
               path="/Admin/applicant/:applicantid/:formid"
               component={ViewSingleApplicant}
+              isAuthorize={this.state.user}
+              to='/'
             />
-            <Route exact path="/Applicants" component={Applicants} />
-            <Route
+            <RedirectingRoute
               exact
-              path="/Applicants/form/:formid"
+              path="/Admin/applicants"
+              component={Applicants}
+              isAuthorize={this.state.user}
+              to='/'
+            />
+            <RedirectingRoute
+              exact
+              path="/Admin/Applicants/form/:formid"
               component={ViewSingleFormApplicant}
+              isAuthorize={this.state.user}
+              to='/'
             />
             <Route exact path="/applicantforms" component={ApplicantForms} />
             <Route exact path="/newForm" component={NewForm} />
+            <Route component={NoMatch} />
           </Switch>
         </HashRouter>
       </div>

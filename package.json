@@ -11,7 +11,7 @@
     "postbuild-norm": "mkdir ./server/public; npm run build-frontend; mv -v ./frontend/build/* ./server/public",
     "heroku-postbuild": "mkdir ./server/public; npm run build-frontend; mv -v ./frontend/build/* ./server/public; rm -rf ./frontend; rm -rf ../frontend;",
     "start-client": "cd frontend; npm start",
-    "start-server": "cd server; npm run start-dev",
+    "start-server": "PORT=3001; cd server; npm run start-dev",
     "start-dev": "npm-run-all -p start-client start-server",
     "start": "cd server; npm run seed; npm run start",
     "test-server": "cd server; npm run test",

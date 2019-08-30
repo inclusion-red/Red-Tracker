@@ -14,7 +14,7 @@ function AdminPage(props) {
           <div className="container">
             <h1 className="title">WELCOME #ADMIN</h1>
             <div className="buttons are-large is-centered">
-              <Link to="/applicants" className="button is-success">
+              <Link to="Admin/applicants" className="button is-success">
                 Applicants
               </Link>
               <Link to="/newForm" className="button is-info">

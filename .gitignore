@@ -12,6 +12,7 @@ node_modules
 /frontend/build
 /server/public
 .env
+/server/.env
 
 # misc
 .DS_Store

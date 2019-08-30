@@ -86,6 +86,7 @@ const Login = props => {
           />
           <TextField
             required
+            type="password"
             id="outlined-required"
             label="Password"
             placeholder="Password"

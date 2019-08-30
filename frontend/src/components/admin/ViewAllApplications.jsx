@@ -68,6 +68,7 @@ export default class AllApplicants extends React.Component {
     //   .catch( e => console.log(e));
   }
 
+  // todo: this is not linked right ()
   createApplicantRow(applicantData, delay) {
     return (
       <ApplicantionRow
@@ -75,7 +76,7 @@ export default class AllApplicants extends React.Component {
         createdat={applicantData.createdat}
         email={applicantData.email}
         status={applicantData.status}
-        to={`/#`}/>
+        to={`/Admin/Applicants/form/${applicantData.id}`}/>
     )
   }
 
