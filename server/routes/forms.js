@@ -51,26 +51,57 @@ router.get('/:id', (req, res, next) => {
 // }
 router.post('/new', async (req, res, next) => {
   try {
-    const newFormData = {"active": req.body.active};
-    const newFormFieldsData = req.body.formfields;
-    console.log(req.body);
-
-    const newForm = await Form.create(newFormData);
+    const newFormData = {"title": req.body.title, "active": req.body.active};
+    const newFormFieldsData = req.body.formFields;
+    console.log(typeof newFormFieldsData);
+    const newForm = await Form.create(newFormData)
+    // newFormFieldsData.map((ele) =>  {
+    //   newForm.setFormfields(ele);
+    // })
     if (!newForm) {
       res.status(400).send({message: "can't create this form"})
+    }else{
+      newForm.update({
+        formFields: newFormFieldsData
+      })
+      res.status(200).send({message: "created successfully"})
+
     }
-    const newFormFields = await Promise.all(newFormFieldsData.map(fieldData => {
-      FormField.create(fieldData).then(formFieldObj => newForm.setFormfields(formFieldObj));
-    }));
-    if (!newFormFields) {
-      res.status(400).send({message: "can't create formfield inputs"})
-    }
-    res.status(200).send({message: "created successfully"})
+   
+    // const newFormFields = await Promise.all((fieldData => {
+    //   FormField.create(fieldData).then(formFieldObj => newForm.setFormfields(formFieldObj));
+    // }));
+    // if (!newFormFields) {
+    //   res.status(400).send({message: "can't create formfield inputs"})
+    // }
   }
   catch(e) {
     next(e)
   }
 })
+
+// router.post('/update', async (req, res, next) => {
+//   try {
+
+//     const formID = req.body.formID;
+//     const newFormFieldsData = req.body.newFormFields;
+    
+//     const form = await Form.findOne(formID);
+//     if (!form) {
+//       res.status(400).send({message: "can't create this form"})
+//     }
+//     const newFormFields = await Promise.all(newFormFieldsData.map(fieldData => {
+//       form.setFormfields(formFieldObj);
+//     }));
+//     if (!newFormFields) {
+//       res.status(400).send({message: "can't create formfield inputs"})
+//     }
+//     res.status(200).send({message: "created successfully"})
+//   }
+//   catch(e) {
+//     next(e)
+//   }
+// })
 
 // update a form by id (and inputs if any change might be easier to delete and make a new one)
 // router.post('/update/:id', (req, res) => {
