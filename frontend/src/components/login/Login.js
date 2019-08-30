@@ -56,7 +56,7 @@ const Login = props => {
   };
 
   if (user) {
-    return <Redirect to="/Admin" />;
+    return <Redirect to="/" />;
   }
   return (
     <div>
