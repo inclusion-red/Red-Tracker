@@ -31,8 +31,8 @@ const seed = function () {
       console.log("Forms added to every Admin")
 
       //generate FormFields
-      await Promise.all(formFieldJSON.map(formfield=> FormField.create(formfield)));
-      console.log("FormField Data seeded")
+      // await Promise.all(formFieldJSON.map(formfield=> FormField.create(formfield)));
+      // console.log("FormField Data seeded")
 
       //generate ApplicantForm
       await Promise.all(applicantFormJSON.map(appform => ApplicantForm.create(appform)));

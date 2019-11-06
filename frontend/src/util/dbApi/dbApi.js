@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const test = (userData) => {
+export const createForm = (userData) => {
     return axios.post('/api/form/new', userData);
 };

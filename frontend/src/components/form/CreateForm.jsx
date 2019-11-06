@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Formfield from './FormFields/InputField.jsx';
 import CheckBox from './FormFields/CheckBox.jsx';
 import { useStateValue } from './stateProvider';
-import { test } from '../../util/dbApi/dbApi';
+import { createForm } from '../../util/dbApi/dbApi';
 
 
 function CreateForm() {
@@ -33,7 +33,7 @@ function CreateForm() {
         "title": "tempForm",
         "formFields": newFormFields
       }
-      test(userData);
+      createForm(userData);
     }
   })
 
@@ -51,7 +51,6 @@ function CreateForm() {
   });
 
   return (
-    // <StateProvider initialState={initialState} reducer={reducer}>
     <div className="container is-small">
       <div className="buttons are-large is-centered">
         <span className="button is-success" onClick={addTextField}>TextField</span>
@@ -63,8 +62,6 @@ function CreateForm() {
         <input className="button" onClick={plzsave} value="Submit Form"></input>
       </form>
     </div>
-    //  </StateProvider>
-
   )
 }
 
